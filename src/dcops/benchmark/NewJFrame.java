@@ -28,7 +28,13 @@ public class NewJFrame extends javax.swing.JFrame {
     private void initComponents() {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        try {
+            buttonGroup1 =(javax.swing.ButtonGroup)java.beans.Beans.instantiate(getClass().getClassLoader(), "dcops/benchmark.NewJFrame_buttonGroup1");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }
         buttonGroup2 = new javax.swing.ButtonGroup();
         buttonGroup3 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
@@ -245,6 +251,11 @@ public class NewJFrame extends javax.swing.JFrame {
 
         buttonGroup2.add(StaticFrequency);
         StaticFrequency.setText("Static");
+        StaticFrequency.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StaticFrequencyActionPerformed(evt);
+            }
+        });
 
         buttonGroup2.add(FrequncyVariance);
         FrequncyVariance.setText("Frequncy Variance");
@@ -478,12 +489,69 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_bSetActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+//            ConstraintGenerator.main(changesParam, dimensionParam, runsParam, constraintParam, lowerParam, upperParam, functionParam, algorithmParam, frequencyParam, freqDistParam, accuracyParam, solverRunsParam);
         // TODO add your handling code here:
+       int changesParam = Integer.parseInt(NumberOfChanges.getText().trim());
+       int dimensionParam = Integer.parseInt(NumberOfDimensions.getText().trim());
+       int runsParam = Integer.parseInt(NumberOfRuns.getText().trim());
+       
+       int constraintParam = 0;
+       if (buttonGroup1.getSelection().equals(GenerateConstraints.getModel())) {
+                constraintParam = 0;
+            }
+       else
+       {
+           constraintParam = 1;
+       }
+       
+        int lowerParam = Integer.parseInt(LowerBounds.getText().trim());
+        int upperParam = Integer.parseInt(UpperBounds.getText().trim());
+        
+        int functionParam[] = {0,0,0,0,0};
+        if (Sphere.isSelected()) {
+            functionParam[0] = 1;
+            }
+        if (Rastrigin.isSelected()) {
+            functionParam[1] = 1;
+            }
+        if (Ackley.isSelected()) {
+            functionParam[2] = 1;
+            }
+        if (Rosenbrock.isSelected()) {
+            functionParam[3] = 1;
+            }
+        
+        int freqDistParam = 0;
+        if (buttonGroup2.getSelection().equals(StaticFrequency.getModel())) {
+                freqDistParam = 0;
+            }
+        else{
+        freqDistParam = 1;
+        }
+        
+        //new one
+        double bSetting = 0;
+        if(buttonGroup3.getSelection().equals(bSet.getModel())){
+            bSetting = Double.parseDouble(bStartsFrom.getText().trim());
+        }
+        
+        double lk = Double.parseDouble(LowerK.getText().trim());
+        double up = Double.parseDouble(UpperK.getText().trim());
+        
+        
+        
+
+        
+        System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void HiperplaneRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HiperplaneRadioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_HiperplaneRadioActionPerformed
+
+    private void StaticFrequencyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StaticFrequencyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_StaticFrequencyActionPerformed
 
     /**
      * @param args the command line arguments
