@@ -268,8 +268,14 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="NumberOfRuns">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NumberOfRunsActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="NumberOfDimensions">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NumberOfDimensionsActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
@@ -330,11 +336,17 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="LowerBounds">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LowerBoundsActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="UpperBounds">
           <Properties>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpperBoundsActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -455,6 +467,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Sphere"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SphereActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="Ackley">
           <Properties>
@@ -526,6 +541,9 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="bStartsFrom">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bStartsFromActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel15">
           <Properties>
@@ -538,8 +556,14 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="LowerK">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LowerKActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="UpperK">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpperKActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

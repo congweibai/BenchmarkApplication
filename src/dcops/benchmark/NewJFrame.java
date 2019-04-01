@@ -5,6 +5,9 @@
  */
 package dcops.benchmark;
 
+import javax.swing.text.NumberFormatter;
+import java.io.File;
+        
 /**
  *
  * @author BAICONGEI
@@ -16,6 +19,7 @@ public class NewJFrame extends javax.swing.JFrame {
      */
     public NewJFrame() {
         initComponents();
+        
     }
 
     /**
@@ -108,6 +112,18 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabel6.setText("Number of Runs:");
 
+        NumberOfRuns.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NumberOfRunsActionPerformed(evt);
+            }
+        });
+
+        NumberOfDimensions.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NumberOfDimensionsActionPerformed(evt);
+            }
+        });
+
         jLabel7.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel7.setText("Constraint Generation");
 
@@ -142,7 +158,18 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabel10.setText("Upper Bounds:");
 
+        LowerBounds.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LowerBoundsActionPerformed(evt);
+            }
+        });
+
         UpperBounds.setToolTipText("");
+        UpperBounds.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpperBoundsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -239,6 +266,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel12.setText("Function Selection");
 
         Sphere.setText("Sphere");
+        Sphere.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SphereActionPerformed(evt);
+            }
+        });
 
         Ackley.setText("Ackley");
 
@@ -278,9 +310,27 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
+        bStartsFrom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bStartsFromActionPerformed(evt);
+            }
+        });
+
         jLabel15.setText("Lower_k");
 
         jLabel16.setText("Upper_k");
+
+        LowerK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LowerKActionPerformed(evt);
+            }
+        });
+
+        UpperK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpperKActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -470,6 +520,9 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void NumberOfChangesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumberOfChangesActionPerformed
         // TODO add your handling code here:
+        if(NumberOfChanges.getText().equals("")){
+            NumberOfChanges.setText("1");
+        }
     }//GEN-LAST:event_NumberOfChangesActionPerformed
 
     private void GenerateConstraintsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerateConstraintsActionPerformed
@@ -482,10 +535,19 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void bEqualToZeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEqualToZeroActionPerformed
         // TODO add your handling code here:
+        if(bEqualToZero.isSelected())
+        {
+            bEqualToZero.setText("0");
+            bStartsFrom.setEnabled(false);
+        }
     }//GEN-LAST:event_bEqualToZeroActionPerformed
 
     private void bSetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSetActionPerformed
         // TODO add your handling code here:
+        if(bSet.isSelected())
+        {
+            bStartsFrom.setEnabled(true);
+        }
     }//GEN-LAST:event_bSetActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -536,9 +598,13 @@ public class NewJFrame extends javax.swing.JFrame {
         }
         
         double lk = Double.parseDouble(LowerK.getText().trim());
-        double up = Double.parseDouble(UpperK.getText().trim());
+        double uk = Double.parseDouble(UpperK.getText().trim());
         
-        
+        int algorithmParam[] = {0,0,0,1};
+        int accuracyParam = 100;
+        int frequencyParam = 0 ;
+        int solverRunsParam = 0;
+        DE_Best_know.main(changesParam, dimensionParam, runsParam, constraintParam, lowerParam, upperParam, functionParam, algorithmParam, frequencyParam, freqDistParam, accuracyParam, solverRunsParam); 
         
 
         
@@ -552,6 +618,60 @@ public class NewJFrame extends javax.swing.JFrame {
     private void StaticFrequencyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StaticFrequencyActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_StaticFrequencyActionPerformed
+
+    private void NumberOfDimensionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumberOfDimensionsActionPerformed
+        // TODO add your handling code here:
+        if(NumberOfDimensions.getText().equals("")){
+            NumberOfDimensions.setText("1");
+        }
+    }//GEN-LAST:event_NumberOfDimensionsActionPerformed
+
+    private void NumberOfRunsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumberOfRunsActionPerformed
+        // TODO add your handling code here:
+        if(NumberOfRuns.getText().equals("")){
+            NumberOfRuns.setText("1");
+        }
+    }//GEN-LAST:event_NumberOfRunsActionPerformed
+
+    private void LowerBoundsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LowerBoundsActionPerformed
+        // TODO add your handling code here:
+        if(LowerBounds.getText().equals("")){
+            LowerBounds.setText("-5");
+        }
+    }//GEN-LAST:event_LowerBoundsActionPerformed
+
+    private void UpperBoundsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpperBoundsActionPerformed
+        // TODO add your handling code here:
+        if(UpperBounds.getText().equals("")){
+            UpperBounds.setText("5");
+        }
+    }//GEN-LAST:event_UpperBoundsActionPerformed
+
+    private void SphereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SphereActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SphereActionPerformed
+
+    private void bStartsFromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bStartsFromActionPerformed
+        // TODO add your handling code here:
+
+        if(bStartsFrom.getText().equals("")){
+            bStartsFrom.setText("0");
+        }
+    }//GEN-LAST:event_bStartsFromActionPerformed
+
+    private void LowerKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LowerKActionPerformed
+        // TODO add your handling code here:
+        if(LowerK.getText().equals("")){
+            LowerK.setText("0");
+        }
+    }//GEN-LAST:event_LowerKActionPerformed
+
+    private void UpperKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpperKActionPerformed
+        // TODO add your handling code here:
+        if(UpperK.getText().equals("")){
+            UpperK.setText("0");
+        }
+    }//GEN-LAST:event_UpperKActionPerformed
 
     /**
      * @param args the command line arguments
