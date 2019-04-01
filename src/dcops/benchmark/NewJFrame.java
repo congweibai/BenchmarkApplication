@@ -19,7 +19,11 @@ public class NewJFrame extends javax.swing.JFrame {
      */
     public NewJFrame() {
         initComponents();
-        
+        File f1 = new File("ConstraintSet.txt");
+        File f2 = new File("ConstraintSet.csv");
+        if(f1.isFile() && f2.isFile()) {
+            UseExistingConstraintSet.setEnabled(true);
+        }
     }
 
     /**
@@ -30,7 +34,6 @@ public class NewJFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         try {
             buttonGroup1 =(javax.swing.ButtonGroup)java.beans.Beans.instantiate(getClass().getClassLoader(), "dcops/benchmark.NewJFrame_buttonGroup1");
@@ -53,7 +56,7 @@ public class NewJFrame extends javax.swing.JFrame {
         NumberOfDimensions = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         GenerateConstraints = new javax.swing.JRadioButton();
-        javax.swing.JRadioButton UseExistingConstraintSet = new javax.swing.JRadioButton();
+        UseExistingConstraintSet = new javax.swing.JRadioButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -129,10 +132,6 @@ public class NewJFrame extends javax.swing.JFrame {
 
         buttonGroup1.add(GenerateConstraints);
         GenerateConstraints.setText("Generate Constraints");
-
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, buttonGroup1, org.jdesktop.beansbinding.ELProperty.create("${elements}"), GenerateConstraints, org.jdesktop.beansbinding.BeanProperty.create("selected"));
-        bindingGroup.addBinding(binding);
-
         GenerateConstraints.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 GenerateConstraintsActionPerformed(evt);
@@ -141,10 +140,6 @@ public class NewJFrame extends javax.swing.JFrame {
 
         buttonGroup1.add(UseExistingConstraintSet);
         UseExistingConstraintSet.setText("Use Existing Constraint Set");
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, buttonGroup1, org.jdesktop.beansbinding.ELProperty.create("${elements}"), UseExistingConstraintSet, org.jdesktop.beansbinding.BeanProperty.create("selected"));
-        bindingGroup.addBinding(binding);
-
         UseExistingConstraintSet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UseExistingConstraintSetActionPerformed(evt);
@@ -513,8 +508,6 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        bindingGroup.bind();
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -524,10 +517,6 @@ public class NewJFrame extends javax.swing.JFrame {
             NumberOfChanges.setText("1");
         }
     }//GEN-LAST:event_NumberOfChangesActionPerformed
-
-    private void GenerateConstraintsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerateConstraintsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_GenerateConstraintsActionPerformed
 
     private void UseExistingConstraintSetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UseExistingConstraintSetActionPerformed
         // TODO add your handling code here:
@@ -588,7 +577,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 freqDistParam = 0;
             }
         else{
-        freqDistParam = 1;
+            freqDistParam = 1;
         }
         
         //new one
@@ -600,6 +589,8 @@ public class NewJFrame extends javax.swing.JFrame {
         double lk = Double.parseDouble(LowerK.getText().trim());
         double uk = Double.parseDouble(UpperK.getText().trim());
         
+        
+        //unshown in GUI
         int algorithmParam[] = {0,0,0,1};
         int accuracyParam = 100;
         int frequencyParam = 0 ;
@@ -673,6 +664,10 @@ public class NewJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_UpperKActionPerformed
 
+    private void GenerateConstraintsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerateConstraintsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GenerateConstraintsActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -727,6 +722,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton TranslationRadio;
     private javax.swing.JTextField UpperBounds;
     private javax.swing.JTextField UpperK;
+    private javax.swing.JRadioButton UseExistingConstraintSet;
     private javax.swing.JRadioButton bEqualToZero;
     private javax.swing.JRadioButton bSet;
     private javax.swing.JTextField bStartsFrom;
@@ -754,6 +750,5 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

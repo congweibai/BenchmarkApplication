@@ -292,9 +292,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Generate Constraints"/>
           </Properties>
-          <BindingProperties>
-            <BindingProperty name="selected" source="buttonGroup1" sourcePath="${elements}" target="GenerateConstraints" targetPath="selected" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GenerateConstraintsActionPerformed"/>
           </Events>
@@ -306,16 +303,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Use Existing Constraint Set"/>
           </Properties>
-          <BindingProperties>
-            <BindingProperty name="selected" source="buttonGroup1" sourcePath="${elements}" target="UseExistingConstraintSet" targetPath="selected" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UseExistingConstraintSetActionPerformed"/>
           </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
-          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
