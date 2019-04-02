@@ -580,6 +580,7 @@ public class NewJFrame extends javax.swing.JFrame {
             freqDistParam = 1;
         }
         
+        //t
         //new one
         double bSetting = 0;
         if(buttonGroup3.getSelection().equals(bSet.getModel())){
