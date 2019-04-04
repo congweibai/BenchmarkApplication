@@ -86,7 +86,6 @@ public class NewJFrame extends javax.swing.JFrame {
         RatationRadio = new javax.swing.JRadioButton();
         CombinedRadio = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
-        jLabel17 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -455,9 +454,6 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel17.setFont(new java.awt.Font("Lucida Grande", 1, 15)); // NOI18N
-        jLabel17.setText("Optimum Best");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -480,9 +476,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(236, 236, 236)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel17)
-                .addGap(72, 72, 72))
+                .addGap(72, 286, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
@@ -496,8 +490,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel17))
+                    .addComponent(jLabel11))
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -596,7 +589,7 @@ public class NewJFrame extends javax.swing.JFrame {
         int accuracyParam = 100;
         int frequencyParam = 0 ;
         int solverRunsParam = 0;
-        DE_Best_know.main(changesParam, dimensionParam, runsParam, constraintParam, lowerParam, upperParam, functionParam, algorithmParam, frequencyParam, freqDistParam, accuracyParam, solverRunsParam); 
+        //DE_Best_knowAdd.main(changesParam, dimensionParam, runsParam, constraintParam, lowerParam, upperParam, functionParam, algorithmParam, frequencyParam, freqDistParam, accuracyParam, solverRunsParam); 
         
 
         
@@ -739,7 +732,6 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
