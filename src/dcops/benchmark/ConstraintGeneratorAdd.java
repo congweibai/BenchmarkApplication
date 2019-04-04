@@ -28,8 +28,8 @@ import java.util.Scanner;
 public class ConstraintGeneratorAdd {
     public static String fileName;    
     public static int []randFreq;
-    int changesParam; int dimensionParam; int runsParam; int constraintParam; int lowerParam; int upperParam; int functionParam[]; int algorithmParam[]; int frequencyParam; int freqDistParam; int accuracyParam[]; int soverRunsParam;
-
+    int changesParam; int dimensionParam; int runsParam; int constraintParam; int lowerParam; int upperParam; int functionParam[]; int algorithmParam[]; int frequencyParam; int freqDistParam; int accuracyParam[];
+    
     
     public static int[] freqPerm(int[] frequency, int numChange) {
         int []ret = new int[numChange];
@@ -274,13 +274,13 @@ public static void printFileFXs(String name, List<List<Double>> listFXs, int run
         return arr;
     }
     
-    public static void main(int changesParam, int dimensionParam, int runsParam, int constraintParam, int lowerParam, int upperParam, int functionParam[], int algorithmParam[], int frequencyParam, int freqDistParam, int accuracyParam, int soverRunsParam) {//b0=0, uk and lk=15
-        double b0=0;
-        double lk=-3.0, uk=3.0; 
+    public static void main(int changesParam, int dimensionParam,  int constraintParam, double lkParam, double ukParam,
+            double lowerParam, double upperParam, double b0Param) {//b0=0, uk and lk=15
+        double b0=b0Param;
+        double lk=lkParam, uk=ukParam; 
         int numChange = changesParam;
         int numVars = dimensionParam;
         double minpos = lowerParam, maxpos = upperParam;
-        double normVal = Math.sqrt((double)1/dimensionParam);
        
         boolean exp3[] = new boolean[numChange];
         double alt = 0;
@@ -297,7 +297,7 @@ public static void printFileFXs(String name, List<List<Double>> listFXs, int run
         for(int k = 0; k < numVars; k++)
         numbers.add(k);
         Collections.shuffle(numbers);
-        int frequency = frequencyParam;
+        //int frequency = 0;//frequencyParam;
         double [][] a = new double[numChange][numVars];
         double sum = 0;
         for (int j = 0; j < numVars; j++) {
@@ -338,7 +338,8 @@ public static void printFileFXs(String name, List<List<Double>> listFXs, int run
         double [] b=generatedB(b0, a, numChange, lk, uk, minpos, maxpos, exp3);
         printFile(fileName, b, a, numChange, numVars, lk, uk);
         printCSV(fileName, b, numChange);
-        randFreq = freqGen(frequency, numChange);  
+        //This function is for generate Random Frequencies of the change, just it needs to be writed in a file
+        //randFreq = freqGen(frequency, numChange);  
         System.out.println("Constraints Generated");
     }
 }
