@@ -584,6 +584,7 @@ public class NewJFrame extends javax.swing.JFrame {
         double uk = Double.parseDouble(UpperK.getText().trim());
         
         
+        //
         //unshown in GUI
         int algorithmParam[] = {0,0,0,1};
         int accuracyParam = 100;
