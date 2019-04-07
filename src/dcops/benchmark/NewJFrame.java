@@ -598,6 +598,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void bStartsFromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bStartsFromActionPerformed
         // TODO add your handling code here:
+        //
 
         if(bStartsFrom.getText().equals("")){
             bStartsFrom.setText("0");
