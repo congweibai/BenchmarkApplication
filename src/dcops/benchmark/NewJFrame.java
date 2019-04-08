@@ -21,9 +21,7 @@ public class NewJFrame extends javax.swing.JFrame {
         initComponents();
         File f1 = new File("ConstraintSet.txt");
         File f2 = new File("ConstraintSet.csv");
-        if(f1.isFile() && f2.isFile()) {
-            UseExistingConstraintSet.setEnabled(true);
-        }
+        
     }
 
     /**
@@ -102,6 +100,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabel4.setText("Numer of Changes:");
 
+        NumberOfChanges.setText("200");
         NumberOfChanges.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NumberOfChangesActionPerformed(evt);
@@ -112,12 +111,14 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabel6.setText("Number of Runs:");
 
+        NumberOfRuns.setText("30");
         NumberOfRuns.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NumberOfRunsActionPerformed(evt);
             }
         });
 
+        NumberOfDimensions.setText("30");
         NumberOfDimensions.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NumberOfDimensionsActionPerformed(evt);
@@ -131,12 +132,14 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabel10.setText("Upper Bounds:");
 
+        LowerBounds.setText("-5");
         LowerBounds.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LowerBoundsActionPerformed(evt);
             }
         });
 
+        UpperBounds.setText("5");
         UpperBounds.setToolTipText("");
         UpperBounds.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -222,6 +225,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel12.setText("Function Selection");
 
+        Sphere.setSelected(true);
         Sphere.setText("Sphere");
         Sphere.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,13 +233,17 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
+        Ackley.setSelected(true);
         Ackley.setText("Ackley");
 
+        Rastrigin.setSelected(true);
         Rastrigin.setText("Rastrigin");
 
+        Rosenbrock.setSelected(true);
         Rosenbrock.setText("Rosenbrock");
 
         buttonGroup3.add(bEqualToZero);
+        bEqualToZero.setSelected(true);
         bEqualToZero.setText("b=0");
         bEqualToZero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -356,6 +364,7 @@ public class NewJFrame extends javax.swing.JFrame {
         HiperplaneRatationRadio.setText("Hiperplane Rotation");
 
         buttonGroup4.add(CombinedRadio);
+        CombinedRadio.setSelected(true);
         CombinedRadio.setText("Combined");
 
         jLabel7.setText("Evaluations Max:");
@@ -368,6 +377,7 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
+        RunTimes.setText("1");
         RunTimes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RunTimesActionPerformed(evt);
@@ -503,16 +513,16 @@ public class NewJFrame extends javax.swing.JFrame {
        int runsParam = Integer.parseInt(NumberOfRuns.getText().trim());
        
        int constraintParam = 0;
-       if (buttonGroup1.getSelection().equals(GenerateConstraints.getModel())) {
+       /*if (buttonGroup1.getSelection().equals(GenerateConstraints.getModel())) {
                 constraintParam = 0;
             }
        else
        {
            constraintParam = 1;
-       }
+       }*/
        
-        int lowerParam = Integer.parseInt(LowerBounds.getText().trim());
-        int upperParam = Integer.parseInt(UpperBounds.getText().trim());
+        double lowerParam = Double.parseDouble(LowerBounds.getText().trim());
+        double upperParam = Double.parseDouble(UpperBounds.getText().trim());
         
         int functionParam[] = {0,0,0,0,0};
         if (Sphere.isSelected()) {
@@ -529,12 +539,12 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         
         int freqDistParam = 0;
-        if (buttonGroup2.getSelection().equals(StaticFrequency.getModel())) {
+        /*if (buttonGroup2.getSelection().equals(StaticFrequency.getModel())) {
                 freqDistParam = 0;
             }
         else{
             freqDistParam = 1;
-        }
+        }*/
         
         //t
         //new one
@@ -546,6 +556,9 @@ public class NewJFrame extends javax.swing.JFrame {
         double lk = Double.parseDouble(LowerK.getText().trim());
         double uk = Double.parseDouble(UpperK.getText().trim());
         
+        int Max_EvalParam = Integer.parseInt(MaxEvaluations.getText().trim());
+        
+        int RunsParam = Integer.parseInt(RunTimes.getText().trim());
         
         //
         //unshown in GUI
@@ -554,6 +567,8 @@ public class NewJFrame extends javax.swing.JFrame {
         int frequencyParam = 0 ;
         int solverRunsParam = 0;
         //DE_Best_knowAdd.main(changesParam, dimensionParam, runsParam, constraintParam, lowerParam, upperParam, functionParam, algorithmParam, frequencyParam, freqDistParam, accuracyParam, solverRunsParam); 
+        DE_Best_knowAdd.main(changesParam,dimensionParam,functionParam,Max_EvalParam,RunsParam);
+        ConstraintGeneratorAdd.main(changesParam, dimensionParam, constraintParam, lk, uk, lowerParam, upperParam, bSetting);
         
 
         
@@ -621,10 +636,16 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void MaxEvaluationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MaxEvaluationsActionPerformed
         // TODO add your handling code here:
+        if(MaxEvaluations.getText().equals("")){
+            MaxEvaluations.setText("1");
+        }
     }//GEN-LAST:event_MaxEvaluationsActionPerformed
 
     private void RunTimesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RunTimesActionPerformed
         // TODO add your handling code here:
+        if(RunTimes.getText().equals("")){
+        RunTimes.setText("1");
+        }
     }//GEN-LAST:event_RunTimesActionPerformed
 
     /**

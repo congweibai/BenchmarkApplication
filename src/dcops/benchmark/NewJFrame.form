@@ -231,6 +231,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="NumberOfChanges">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="200"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NumberOfChangesActionPerformed"/>
           </Events>
@@ -246,11 +249,17 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="NumberOfRuns">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="30"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NumberOfRunsActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="NumberOfDimensions">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="30"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NumberOfDimensionsActionPerformed"/>
           </Events>
@@ -274,12 +283,16 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="LowerBounds">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="-5"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LowerBoundsActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="UpperBounds">
           <Properties>
+            <Property name="text" type="java.lang.String" value="5"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
@@ -388,6 +401,7 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="Sphere">
           <Properties>
+            <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="Sphere"/>
           </Properties>
           <Events>
@@ -396,16 +410,19 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="Ackley">
           <Properties>
+            <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="Ackley"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JCheckBox" name="Rastrigin">
           <Properties>
+            <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="Rastrigin"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JCheckBox" name="Rosenbrock">
           <Properties>
+            <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="Rosenbrock"/>
           </Properties>
         </Component>
@@ -414,6 +431,7 @@
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="buttonGroup3"/>
             </Property>
+            <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="b=0"/>
           </Properties>
           <Events>
@@ -554,6 +572,7 @@
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="buttonGroup4"/>
             </Property>
+            <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="Combined"/>
           </Properties>
         </Component>
@@ -573,6 +592,9 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="RunTimes">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="1"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RunTimesActionPerformed"/>
           </Events>
