@@ -7,6 +7,7 @@ package dcops.benchmark;
 
 import javax.swing.text.NumberFormatter;
 import java.io.File;
+import javax.swing.JOptionPane;
         
 /**
  *
@@ -562,6 +563,7 @@ public class NewJFrame extends javax.swing.JFrame {
         
         //
         //unshown in GUI
+        JOptionPane.showMessageDialog(null,"Constrains and Optimal per change Files sucessfully generate.");
         int algorithmParam[] = {0,0,0,1};
         int accuracyParam = 100;
         int frequencyParam = 0 ;
