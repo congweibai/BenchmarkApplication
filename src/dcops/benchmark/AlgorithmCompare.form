@@ -27,26 +27,26 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="AcceptBotton" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jScrollPane1" min="-2" pref="406" max="-2" attributes="0"/>
+                  <Component id="AcceptBotton" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="23" max="32767" attributes="0"/>
+              <EmptySpace pref="30" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="424" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -65,14 +65,16 @@
                           </Group>
                           <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="156" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="173" max="-2" attributes="0"/>
+              <EmptySpace pref="16" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -83,14 +85,14 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="PenaltySelect" min="-2" max="-2" attributes="0"/>
-                      <Component id="FeasibilitySelect" min="-2" max="-2" attributes="0"/>
-                      <Component id="EpsilonSelect" min="-2" max="-2" attributes="0"/>
+                      <Component id="FeasibilitySelect" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="EpsilonSelect" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="PenaltySelect" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="41" max="32767" attributes="0"/>
+                  <EmptySpace pref="49" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -98,12 +100,12 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="EpsilonSelect" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="FeasibilitySelect" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
+                  <Component id="EpsilonSelect" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="PenaltySelect" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="24" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="53" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -117,14 +119,14 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EpsilonSelectActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="FeasibilitySelect">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Feasibility"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JCheckBox" name="PenaltySelect">
           <Properties>
             <Property name="text" type="java.lang.String" value="Penalty"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="FeasibilitySelect">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Feasibility"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -258,10 +260,10 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="SphereSelect" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="AckleySelect" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="RastriginSelect" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="RosenbrockSelect" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="Sphere" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="Ackley" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="Rastrigin" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="Rosenbrock" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="32" max="32767" attributes="0"/>
               </Group>
@@ -273,13 +275,13 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="SphereSelect" min="-2" max="-2" attributes="0"/>
+                  <Component id="Sphere" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="AckleySelect" min="-2" max="-2" attributes="0"/>
+                  <Component id="Ackley" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="RastriginSelect" min="-2" max="-2" attributes="0"/>
+                  <Component id="Rastrigin" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="RosenbrockSelect" min="-2" max="-2" attributes="0"/>
+                  <Component id="Rosenbrock" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="20" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -294,25 +296,25 @@
             <Property name="text" type="java.lang.String" value="Function Selection"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="SphereSelect">
+        <Component class="javax.swing.JCheckBox" name="Sphere">
           <Properties>
             <Property name="text" type="java.lang.String" value="Sphere"/>
             <Property name="actionCommand" type="java.lang.String" value=""/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="AckleySelect">
+        <Component class="javax.swing.JCheckBox" name="Ackley">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ackley"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="RastriginSelect">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Rastrigin"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="RosenbrockSelect">
+        <Component class="javax.swing.JCheckBox" name="Rosenbrock">
           <Properties>
             <Property name="text" type="java.lang.String" value="Rosenbrock"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="Rastrigin">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Rastrigin"/>
           </Properties>
         </Component>
       </SubComponents>

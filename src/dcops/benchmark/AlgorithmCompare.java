@@ -30,8 +30,8 @@ public class AlgorithmCompare extends javax.swing.JFrame {
         algorSelect = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         EpsilonSelect = new javax.swing.JCheckBox();
-        FeasibilitySelect = new javax.swing.JCheckBox();
         PenaltySelect = new javax.swing.JCheckBox();
+        FeasibilitySelect = new javax.swing.JCheckBox();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -44,10 +44,10 @@ public class AlgorithmCompare extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        SphereSelect = new javax.swing.JCheckBox();
-        AckleySelect = new javax.swing.JCheckBox();
-        RastriginSelect = new javax.swing.JCheckBox();
-        RosenbrockSelect = new javax.swing.JCheckBox();
+        Sphere = new javax.swing.JCheckBox();
+        Ackley = new javax.swing.JCheckBox();
+        Rosenbrock = new javax.swing.JCheckBox();
+        Rastrigin = new javax.swing.JCheckBox();
         jPanel4 = new javax.swing.JPanel();
         CombinedRadio = new javax.swing.JRadioButton();
         HiperplaneRatationRadio = new javax.swing.JRadioButton();
@@ -65,32 +65,32 @@ public class AlgorithmCompare extends javax.swing.JFrame {
             }
         });
 
-        FeasibilitySelect.setText("Feasibility");
-
         PenaltySelect.setText("Penalty");
+
+        FeasibilitySelect.setText("Feasibility");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PenaltySelect)
                     .addComponent(FeasibilitySelect)
-                    .addComponent(EpsilonSelect))
-                .addContainerGap(41, Short.MAX_VALUE))
+                    .addComponent(EpsilonSelect)
+                    .addComponent(PenaltySelect))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(EpsilonSelect)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(FeasibilitySelect)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(EpsilonSelect)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PenaltySelect)
-                .addGap(0, 24, Short.MAX_VALUE))
+                .addGap(0, 53, Short.MAX_VALUE))
         );
 
         jLabel2.setLabelFor(jTextField1);
@@ -164,14 +164,14 @@ public class AlgorithmCompare extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel6.setText("Function Selection");
 
-        SphereSelect.setText("Sphere");
-        SphereSelect.setActionCommand("");
+        Sphere.setText("Sphere");
+        Sphere.setActionCommand("");
 
-        AckleySelect.setText("Ackley");
+        Ackley.setText("Ackley");
 
-        RastriginSelect.setText("Rastrigin");
+        Rosenbrock.setText("Rosenbrock");
 
-        RosenbrockSelect.setText("Rosenbrock");
+        Rastrigin.setText("Rastrigin");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -181,10 +181,10 @@ public class AlgorithmCompare extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(SphereSelect)
-                    .addComponent(AckleySelect)
-                    .addComponent(RastriginSelect)
-                    .addComponent(RosenbrockSelect))
+                    .addComponent(Sphere)
+                    .addComponent(Ackley)
+                    .addComponent(Rastrigin)
+                    .addComponent(Rosenbrock))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -193,13 +193,13 @@ public class AlgorithmCompare extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(SphereSelect)
+                .addComponent(Sphere)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(AckleySelect)
+                .addComponent(Ackley)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RastriginSelect)
+                .addComponent(Rastrigin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RosenbrockSelect)
+                .addComponent(Rosenbrock)
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -258,18 +258,19 @@ public class AlgorithmCompare extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(AcceptBotton)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(AcceptBotton))
+                .addContainerGap(30, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(141, 141, 141))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -283,12 +284,14 @@ public class AlgorithmCompare extends javax.swing.JFrame {
                                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(AcceptBotton))
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
@@ -304,6 +307,32 @@ public class AlgorithmCompare extends javax.swing.JFrame {
 
     private void AcceptBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AcceptBottonActionPerformed
         // TODO add your handling code here:
+        int functionParam[] = {0,0,0,0,0};
+            if (Sphere.isSelected()) {
+                 functionParam[0] = 1;
+                 }
+            if (Rastrigin.isSelected()) {
+                functionParam[1] = 1;
+                }
+            if (Ackley.isSelected()) {
+                functionParam[2] = 1;
+                }
+            if (Rosenbrock.isSelected()) {
+                functionParam[3] = 1;
+                }
+        
+        if (FeasibilitySelect.isSelected()){
+            
+            //FeasibilityRules.main(HAND_CURSOR, SOMEBITS, NORMAL, ERROR, ERROR, functionParam, FRAMEBITS);
+        }
+        if (EpsilonSelect.isSelected()){
+            
+            //EpsilonConstrained.main(HAND_CURSOR, SOMEBITS, NORMAL, ERROR, ERROR, functionParam, FRAMEBITS);
+        }
+        if (PenaltySelect.isSelected()){
+            
+            //Penalty.main(HAND_CURSOR, SOMEBITS, NORMAL, ERROR, ERROR, functionParam, FRAMEBITS);
+        }
     }//GEN-LAST:event_AcceptBottonActionPerformed
 
     /**
@@ -343,16 +372,16 @@ public class AlgorithmCompare extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AcceptBotton;
-    private javax.swing.JCheckBox AckleySelect;
+    private javax.swing.JCheckBox Ackley;
     private javax.swing.JRadioButton CombinedRadio;
     private javax.swing.JCheckBox EpsilonSelect;
     private javax.swing.JCheckBox FeasibilitySelect;
     private javax.swing.JRadioButton HiperplaneRatationRadio;
     private javax.swing.JRadioButton HiperplaneTranslationRadio;
     private javax.swing.JCheckBox PenaltySelect;
-    private javax.swing.JCheckBox RastriginSelect;
-    private javax.swing.JCheckBox RosenbrockSelect;
-    private javax.swing.JCheckBox SphereSelect;
+    private javax.swing.JCheckBox Rastrigin;
+    private javax.swing.JCheckBox Rosenbrock;
+    private javax.swing.JCheckBox Sphere;
     private javax.swing.ButtonGroup algorSelect;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
