@@ -6,7 +6,8 @@
 package dcops.benchmark;
 
 import javax.swing.JOptionPane;
-
+import javax.swing.JProgressBar;
+import java.util.Timer;
 /**
  *
  * @author BAICONGEI
@@ -50,6 +51,11 @@ public class SelectGUIs extends javax.swing.JFrame {
         });
 
         testBenchmark.setText("Test the benchmark");
+        testBenchmark.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                testBenchmarkActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -63,8 +69,8 @@ public class SelectGUIs extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(114, 114, 114)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(testBenchmark)
-                            .addComponent(generateNew))))
+                            .addComponent(generateNew)
+                            .addComponent(testBenchmark))))
                 .addContainerGap(116, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -84,6 +90,8 @@ public class SelectGUIs extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        //JProgressBar jProgressBar2 = new JProgressBar(0,20);
+        
         if((generateNew.isSelected()) && (testBenchmark.isSelected() == false)){
             new NewJFrame().setVisible(true);
             dispose();
@@ -108,6 +116,10 @@ public class SelectGUIs extends javax.swing.JFrame {
     private void generateNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateNewActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_generateNewActionPerformed
+
+    private void testBenchmarkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testBenchmarkActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_testBenchmarkActionPerformed
 
     /**
      * @param args the command line arguments

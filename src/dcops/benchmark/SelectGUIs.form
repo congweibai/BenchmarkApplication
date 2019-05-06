@@ -32,8 +32,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="testBenchmark" min="-2" max="-2" attributes="0"/>
                           <Component id="generateNew" min="-2" max="-2" attributes="0"/>
+                          <Component id="testBenchmark" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -76,6 +76,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Test the benchmark"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="testBenchmarkActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -222,8 +222,8 @@ List <Double> getAverage(List<Double> values) {
     Laverage.add (average);
     return Laverage;
 }
-
-    public static void main(int changesParam, int dimensionParam, int runsParam, int constraintParam, int lowerParam, int upperParam, int functionParam[], int algorithmParam[], int frequencyParam, int freqDistParam, int accuracyParam, int soverRunsParam) {
+    //public static void main(int changesParam, int dimensionParam, int runsParam, int constraintParam, int lowerParam, int upperParam, int functionParam[], int algorithmParam[], int frequencyParam, int freqDistParam, int accuracyParam, int soverRunsParam) {
+    public static void main(int changesParam, int dimensionParam, int runsParam, int lowerParam, int upperParam, int functionParam[], int frequencyParam) {
        int frequency = frequencyParam; //the frequency is determined by the number of evaluations
         String[] Sfuncion = {"Sphere", "Rastrigin", "Ackley", "Rosenbrock", "Power", "Custom"};
         DecimalFormat df = new DecimalFormat("0.000");

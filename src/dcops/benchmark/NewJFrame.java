@@ -239,6 +239,11 @@ public class NewJFrame extends javax.swing.JFrame {
 
         Rastrigin.setSelected(true);
         Rastrigin.setText("Rastrigin");
+        Rastrigin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RastriginActionPerformed(evt);
+            }
+        });
 
         Rosenbrock.setSelected(true);
         Rosenbrock.setText("Rosenbrock");
@@ -649,6 +654,10 @@ public class NewJFrame extends javax.swing.JFrame {
         RunTimes.setText("1");
         }
     }//GEN-LAST:event_RunTimesActionPerformed
+
+    private void RastriginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RastriginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RastriginActionPerformed
 
     /**
      * @param args the command line arguments
