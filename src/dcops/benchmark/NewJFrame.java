@@ -249,7 +249,6 @@ public class NewJFrame extends javax.swing.JFrame {
         Rosenbrock.setText("Rosenbrock");
 
         buttonGroup3.add(bEqualToZero);
-        bEqualToZero.setSelected(true);
         bEqualToZero.setText("b=0");
         bEqualToZero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -260,6 +259,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel14.setText("or");
 
         buttonGroup3.add(bSet);
+        bSet.setSelected(true);
         bSet.setText("b starts");
         bSet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -496,11 +496,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void bEqualToZeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEqualToZeroActionPerformed
         // TODO add your handling code here:
-        if(bEqualToZero.isSelected())
-        {
-            bEqualToZero.setText("0");
-            bStartsFrom.setEnabled(false);
-        }
+        bStartsFrom.setEnabled(false);
     }//GEN-LAST:event_bEqualToZeroActionPerformed
 
     private void bSetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSetActionPerformed
@@ -514,6 +510,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 //            ConstraintGenerator.main(changesParam, dimensionParam, runsParam, constraintParam, lowerParam, upperParam, functionParam, algorithmParam, frequencyParam, freqDistParam, accuracyParam, solverRunsParam);
         // TODO add your handling code here:
+       bStartsFrom.setEnabled(false);
        int changesParam = Integer.parseInt(NumberOfChanges.getText().trim());
        int dimensionParam = Integer.parseInt(NumberOfDimensions.getText().trim());
        int runsParam = Integer.parseInt(NumberOfRuns.getText().trim());
@@ -558,6 +555,9 @@ public class NewJFrame extends javax.swing.JFrame {
         if(buttonGroup3.getSelection().equals(bSet.getModel())){
             bSetting = Double.parseDouble(bStartsFrom.getText().trim());
         }
+        else{
+            bSetting = 0;
+        }
         
         double lk = Double.parseDouble(LowerK.getText().trim());
         double uk = Double.parseDouble(UpperK.getText().trim());
@@ -569,10 +569,10 @@ public class NewJFrame extends javax.swing.JFrame {
         //
         //unshown in GUI
         JOptionPane.showMessageDialog(null,"Constrains and Optimal per change Files sucessfully generate.");
-        int algorithmParam[] = {0,0,0,1};
-        int accuracyParam = 100;
-        int frequencyParam = 0 ;
-        int solverRunsParam = 0;
+        //int algorithmParam[] = {0,0,0,1};
+        //int accuracyParam = 100;
+        //int frequencyParam = 0 ;
+        //int solverRunsParam = 0;
         //DE_Best_knowAdd.main(changesParam, dimensionParam, runsParam, constraintParam, lowerParam, upperParam, functionParam, algorithmParam, frequencyParam, freqDistParam, accuracyParam, solverRunsParam); 
         DE_Best_knowAdd.main(changesParam,dimensionParam,functionParam,Max_EvalParam,RunsParam);
         ConstraintGeneratorAdd.main(changesParam, dimensionParam, constraintParam, lk, uk, lowerParam, upperParam, bSetting);

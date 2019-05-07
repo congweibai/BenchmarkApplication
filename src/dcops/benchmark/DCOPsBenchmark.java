@@ -640,18 +640,18 @@ public class DCOPsBenchmark extends javax.swing.JFrame {
         DE_Best_know.main(changesParam, dimensionParam, runsParam, constraintParam, lowerParam, upperParam, functionParam, algorithmParam, frequencyParam, freqDistParam, accuracyParam, solverRunsParam); 
         if (frSelect.isSelected()) {
 //            FeasibilityRules.main(changesParam, dimensionParam, runsParam, constraintParam, lowerParam, upperParam, functionParam, algorithmParam, frequencyParam, freqDistParam, accuracyParam, solverRunsParam);
-              FeasibilityRules.main(changesParam, dimensionParam, runsParam, lowerParam, upperParam, functionParam, frequencyParam);
+              FeasibilityRules.main(changesParam, dimensionParam, NpParams, FParams, CRParams,runsParam, lowerParam, upperParam, functionParam, frequencyParam);
               //int changesParam, int dimensionParam, int runsParam, int lowerParam, int upperParam, int functionParam[], int frequencyParam
       }
         if (ecSelect.isSelected()) {
             //int changesParam, int dimensionParam, int runsParam, int lowerParam, int upperParam, int functionParam[]
-            EpsilonConstrained.main(changesParam, dimensionParam, runsParam, lowerParam, upperParam, functionParam,frequencyParam);
+            EpsilonConstrained.main(changesParam, dimensionParam, NpParams, FParams, CRParams, runsParam, lowerParam, upperParam, functionParam,frequencyParam);
             //EpsilonConstrained.main(changesParam, dimensionParam, runsParam, constraintParam, lowerParam, upperParam, functionParam, algorithmParam, frequencyParam, freqDistParam, accuracyParam, solverRunsParam);
         }
         if (pmSelect.isSelected()) {
             //int changesParam, int dimensionParam, int runsParam, int lowerParam, int upperParam, int functionParam[], int frequencyParam)
             //Penalty.main(changesParam, dimensionParam, runsParam, constraintParam, lowerParam, upperParam, functionParam, algorithmParam, frequencyParam, freqDistParam, accuracyParam, solverRunsParam);
-            Penalty.main(changesParam, dimensionParam, runsParam, lowerParam, upperParam, functionParam, frequencyParam);
+            Penalty.main(changesParam, dimensionParam, NpParams, FParams, CRParams,runsParam, lowerParam, upperParam, functionParam, frequencyParam);
         }
         if (cSelect.isSelected()) {
             //CustomFunction.main(changesParam, dimensionParam, runsParam, constraintParam, lowerParam, upperParam, functionParam, algorithmParam, frequencyParam, freqDistParam, accuracyParam, solverRunsParam);

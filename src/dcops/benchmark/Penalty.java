@@ -238,14 +238,14 @@ List <Double> getAverage(List<Double> values){
     return Laverage;
 }
     //public static void main(int changesParam, int dimensionParam, int runsParam, int constraintParam, int lowerParam, int upperParam, int functionParam[], int algorithmParam[], int frequencyParam, int freqDistParam, int accuracyParam, int soverRunsParam) {
-    public static void main(int changesParam, int dimensionParam, int runsParam, int lowerParam, int upperParam, int functionParam[], int frequencyParam) {
+    public static void main(int changesParam, int dimensionParam, int NpParams, double FParams, double CRParams,int runsParam, int lowerParam, int upperParam, int functionParam[], int frequencyParam) {
         String[] Sfuncion = {"Sphere", "Rastrigin", "Ackley", "Rosenbrock", "Power", "Custom"};
         DecimalFormat df = new DecimalFormat("0.000");
         
         //variables
         int MAX_Functions = 6, runs = runsParam;// variables for the experiments 
-        int NP = 20, frequency = frequencyParam, D = dimensionParam, eval, numVec = 3, gen;
-        double TIMEs = changesParam, t = 0, CR = 0.2, F, betamin = .2, betamax = .8;
+        int NP = NpParams, frequency = frequencyParam, D = dimensionParam, eval, numVec = 3, gen;
+        double TIMEs = changesParam, t = 0, CR = CRParams, F = FParams;
         int MAX_EVAL = (int) ((TIMEs * frequency) * 2) + 1000;
         int middleNP = NP / 2;
 
@@ -352,7 +352,6 @@ List <Double> getAverage(List<Double> values){
                             }//end for choose three random vectors 
                             int jrand = (int) (Math.random() * DE.D);
                             for (int j = 0; j < DE.D; j++) {
-                                F = Math.random() * (betamax - betamin) + betamin;
 
                                 if (Math.random() < CR || j == jrand) {
                                     ind.x[j] = vectors.get(0).x[j] + F * (vectors.get(1).x[j] - vectors.get(2).x[j]);
