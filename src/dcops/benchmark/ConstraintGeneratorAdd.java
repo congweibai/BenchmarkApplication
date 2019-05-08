@@ -273,6 +273,18 @@ public static void printFileFXs(String name, List<List<Double>> listFXs, int run
         arr[b] = temp;
         return arr;
     }
+    public static double getaverage(List<List<Double>>ListMError){
+            double average =0;
+            for (int i = 0; i < ListMError.size(); i++) {
+                for (int j = 0; j < ListMError.get(i).size(); j++) {
+                    System.out.print(ListMError.get(i).get(j)+", ");
+                    average=ListMError.get(i).get(j)+average;
+                }
+        }
+            average=average/(double)ListMError.size();
+            
+        return average;
+    }
     
     public static void main(int changesParam, int dimensionParam,  int constraintParam, double lkParam, double ukParam,
             double lowerParam, double upperParam, double b0Param) {//b0=0, uk and lk=15

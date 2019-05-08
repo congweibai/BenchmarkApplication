@@ -582,7 +582,7 @@ public class DCOPsBenchmark extends javax.swing.JFrame {
         
         int lowerParam = Integer.parseInt(lowerBounds.getText());
         int upperParam = Integer.parseInt(upperBounds.getText());
-        int functionParam[] = {0,0,0,0,0,0};
+        int functionParam[] = {0,0,0,0};
         //Sphere, Rastrigin, Ackley, Rosenbrock, Custom
             if (sphere.isSelected()) {
                 functionParam[0] = 1;

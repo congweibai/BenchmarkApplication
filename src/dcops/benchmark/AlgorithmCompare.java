@@ -390,7 +390,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
         int changesParam = 200;
         int dimensionParam = 30;
         
-        int functionParam[] = {0,0,0,0,0};
+        int functionParam[] = {0,0,0,0};
             if (Sphere.isSelected()) {
                  functionParam[0] = 1;
                  }

@@ -3,6 +3,7 @@ package dcops.benchmark;
 import static dcops.benchmark.ConstraintGenerator.printFileFXs;
 import static dcops.benchmark.ConstraintGenerator.readFile;
 import static dcops.benchmark.ConstraintGenerator.readFileCsv;
+import static dcops.benchmark.ConstraintGeneratorAdd.getaverage;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -180,7 +181,7 @@ public class FeasibilityRules {
         DecimalFormat df = new DecimalFormat("0.000");
 
         //variables
-        int MAX_Functions = 6, runs = runsParam;// variables for the experiments 
+        int MAX_Functions = functionParam.length, runs = runsParam;// variables for the experiments 
         int NP = NpParams, frequency = frequencyParam, D = dimensionParam, eval, numVec = 3, gen;
         double TIMEs = changesParam, t = 0, CR = CRParams, F = FParams;
         int MAX_EVAL = (int) ((TIMEs * frequency) * 2) + 1000;
@@ -194,6 +195,11 @@ public class FeasibilityRules {
         int  MAX_t=numChange-1;
         String name = "Feasibility";   
         System.out.println("Feasibility Rules");
+        for (int i = 0; i < functionParam.length; i++) {
+            System.out.println(functionParam[i]);
+        }
+        System.out.println("");
+        
         for (int numF = 0; numF < MAX_Functions; numF++) {
             if (functionParam[numF] == 1) {
                 ListFXs = new ArrayList<List<Double>>();
@@ -291,6 +297,7 @@ public class FeasibilityRules {
                 printFileFXs((name + Sfuncion[numF] + "SumCV"), ListSumCV, runs);
                 printFileFXs((name + Sfuncion[numF] + "SumCVs"), ListSumCVs, runs);
                 printFileFXs((name + Sfuncion[numF] + "Merror"), ListMError, runs);
+                System.out.println("Averge "+getaverage(ListMError));
             }
         }//end of the functions
     }
