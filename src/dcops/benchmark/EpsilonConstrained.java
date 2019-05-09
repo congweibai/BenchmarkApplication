@@ -2,9 +2,10 @@ package dcops.benchmark;
 
 // @author maryam
 
-import static dcops.benchmark.ConstraintGenerator.printFileFXs;
-import static dcops.benchmark.ConstraintGenerator.readFile;
-import static dcops.benchmark.ConstraintGenerator.readFileCsv;
+import static dcops.benchmark.ConstraintGeneratorAdd.getaverage;
+import static dcops.benchmark.ConstraintGeneratorAdd.printFileFXs;
+import static dcops.benchmark.ConstraintGeneratorAdd.readFile;
+import static dcops.benchmark.ConstraintGeneratorAdd.readFileCsv;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -228,7 +229,7 @@ List <Double> getAverage(List<Double> values) {
         String[] Sfuncion = {"Sphere", "Rastrigin", "Ackley", "Rosenbrock", "Power", "Custom"};
         DecimalFormat df = new DecimalFormat("0.000");
         //variables
-        int MAX_Functions = 6, runs = runsParam;// variables for the experiments 
+        int MAX_Functions = functionParam.length, runs = runsParam;// variables for the experiments 
         int NP = NpParams, D = dimensionParam, eval, numVec = 3, gen;
         //variables for epsilon constrained 
         int PositionE = (int) (.8 * (double) NP);//position for violation of epsilon; 0.2
@@ -248,6 +249,10 @@ List <Double> getAverage(List<Double> values) {
         String name = "Epsilon";
         
         System.out.println("Epsilon constrained");
+//        for (int i = 0; i < functionParam.length; i++) {
+//            System.out.println(functionParam[i]);
+//        }
+        System.out.println("");
         for (int numF = 0; numF < MAX_Functions; numF++) {
             if (functionParam[numF] == 1) {
             ListFXs = new ArrayList<List<Double>>();
@@ -358,6 +363,7 @@ List <Double> getAverage(List<Double> values) {
                 printFileFXs((name + Sfuncion[numF] + "SumCV"), ListSumCV, runs);
                 printFileFXs((name + Sfuncion[numF] + "SumCVs"), ListSumCVs, runs);
                 printFileFXs((name + Sfuncion[numF] + "Merror"), ListMError, runs);
+                System.out.println("Averge "+getaverage(ListMError));
         }
     }//end of the functions
 }

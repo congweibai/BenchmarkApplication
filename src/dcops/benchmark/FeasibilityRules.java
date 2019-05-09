@@ -1,8 +1,8 @@
 package dcops.benchmark;
 
-import static dcops.benchmark.ConstraintGenerator.printFileFXs;
-import static dcops.benchmark.ConstraintGenerator.readFile;
-import static dcops.benchmark.ConstraintGenerator.readFileCsv;
+import static dcops.benchmark.ConstraintGeneratorAdd.printFileFXs;
+import static dcops.benchmark.ConstraintGeneratorAdd.readFile;
+import static dcops.benchmark.ConstraintGeneratorAdd.readFileCsv;
 import static dcops.benchmark.ConstraintGeneratorAdd.getaverage;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -195,9 +195,9 @@ public class FeasibilityRules {
         int  MAX_t=numChange-1;
         String name = "Feasibility";   
         System.out.println("Feasibility Rules");
-        for (int i = 0; i < functionParam.length; i++) {
-            System.out.println(functionParam[i]);
-        }
+//        for (int i = 0; i < functionParam.length; i++) {
+//            System.out.println(functionParam[i]);
+//        }
         System.out.println("");
         
         for (int numF = 0; numF < MAX_Functions; numF++) {

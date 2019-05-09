@@ -1,9 +1,10 @@
 
 package dcops.benchmark;
 
-import static dcops.benchmark.ConstraintGenerator.printFileFXs;
-import static dcops.benchmark.ConstraintGenerator.readFile;
-import static dcops.benchmark.ConstraintGenerator.readFileCsv;
+import static dcops.benchmark.ConstraintGeneratorAdd.printFileFXs;
+import static dcops.benchmark.ConstraintGeneratorAdd.readFile;
+import static dcops.benchmark.ConstraintGeneratorAdd.readFileCsv;
+import static dcops.benchmark.ConstraintGeneratorAdd.getaverage;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -243,7 +244,7 @@ List <Double> getAverage(List<Double> values){
         DecimalFormat df = new DecimalFormat("0.000");
         
         //variables
-        int MAX_Functions = 6, runs = runsParam;// variables for the experiments 
+        int MAX_Functions = functionParam.length, runs = runsParam;// variables for the experiments 
         int NP = NpParams, frequency = frequencyParam, D = dimensionParam, eval, numVec = 3, gen;
         double TIMEs = changesParam, t = 0, CR = CRParams, F = FParams;
         int MAX_EVAL = (int) ((TIMEs * frequency) * 2) + 1000;
@@ -262,6 +263,9 @@ List <Double> getAverage(List<Double> values){
         String name = "Penalty"; 
 
         System.out.println("Adaptative Penalty");
+//        for (int i = 0; i < functionParam.length; i++) {
+//            System.out.println(functionParam[i]);
+//        }
         for (int numF = 0; numF < MAX_Functions; numF++) {
             if (functionParam[numF] == 1) {
                 ListFXs = new ArrayList<List<Double>>();
@@ -395,6 +399,7 @@ List <Double> getAverage(List<Double> values){
                 printFileFXs((name + Sfuncion[numF] + "SumCV"), ListSumCV, runs);
                 printFileFXs((name + Sfuncion[numF] + "SumCVs"), ListSumCVs, runs);
                 printFileFXs((name + Sfuncion[numF] + "Merror"), ListMError, runs);
+                System.out.println("Averge "+getaverage(ListMError));
 
 
             }//end of the functions

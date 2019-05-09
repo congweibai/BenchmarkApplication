@@ -29,7 +29,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        algorSelect = new javax.swing.ButtonGroup();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         EpsilonSelect = new javax.swing.JCheckBox();
         PenaltySelect = new javax.swing.JCheckBox();
@@ -221,11 +221,14 @@ public class AlgorithmCompare extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
+        buttonGroup1.add(CombinedRadio);
         CombinedRadio.setSelected(true);
         CombinedRadio.setText("Combined");
 
+        buttonGroup1.add(HiperplaneRatationRadio);
         HiperplaneRatationRadio.setText("Hiperplane Rotation");
 
+        buttonGroup1.add(HiperplaneTranslationRadio);
         HiperplaneTranslationRadio.setText("Hiperplane Translation");
         HiperplaneTranslationRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -479,7 +482,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
     private javax.swing.JCheckBox Rastrigin;
     private javax.swing.JCheckBox Rosenbrock;
     private javax.swing.JCheckBox Sphere;
-    private javax.swing.ButtonGroup algorSelect;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
