@@ -298,6 +298,19 @@ public class FeasibilityRules {
                 printFileFXs((name + Sfuncion[numF] + "SumCVs"), ListSumCVs, runs);
                 printFileFXs((name + Sfuncion[numF] + "Merror"), ListMError, runs);
                 System.out.println("Averge "+getaverage(ListMError));
+                if(numF == 0){
+                    AlgorithmCompare.jTextArea1.append("Feasibility: "+ "Sphere:" + "\n");
+                }
+                if(numF == 1){
+                    AlgorithmCompare.jTextArea1.append("Feasibility: "+ "Ackley:" + "\n");
+                }
+                if(numF == 2){
+                    AlgorithmCompare.jTextArea1.append("Feasibility: "+ "Rastrigin:" + "\n");
+                }
+                if(numF == 3){
+                    AlgorithmCompare.jTextArea1.append("Feasibility: "+ "Rosenbrock:" + "\n");
+                }
+                AlgorithmCompare.jTextArea1.append( getaverage(ListMError) + "\n");
             }
         }//end of the functions
     }

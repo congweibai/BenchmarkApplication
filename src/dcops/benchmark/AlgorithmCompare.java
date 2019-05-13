@@ -5,6 +5,7 @@
  */
 package dcops.benchmark;
 
+import static dcops.benchmark.ConstraintGeneratorAdd.getaverage;
 import javax.swing.JOptionPane;
 
 /**
@@ -108,6 +109,11 @@ public class AlgorithmCompare extends javax.swing.JFrame {
         jLabel3.setText("F");
 
         NPsetting.setText("20");
+        NPsetting.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NPsettingActionPerformed(evt);
+            }
+        });
 
         jLabel4.setLabelFor(CRsetting);
         jLabel4.setText("CR");
@@ -125,8 +131,18 @@ public class AlgorithmCompare extends javax.swing.JFrame {
 
         runsSetting.setText("10");
         runsSetting.setToolTipText("");
+        runsSetting.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                runsSettingActionPerformed(evt);
+            }
+        });
 
         CRsetting.setText("0.2");
+        CRsetting.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CRsettingActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel1.setText("Parameter DE");
@@ -161,9 +177,9 @@ public class AlgorithmCompare extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(NPsetting, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(NPsetting, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -184,6 +200,11 @@ public class AlgorithmCompare extends javax.swing.JFrame {
 
         Sphere.setText("Sphere");
         Sphere.setActionCommand("");
+        Sphere.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SphereActionPerformed(evt);
+            }
+        });
 
         Ackley.setText("Ackley");
 
@@ -283,6 +304,11 @@ public class AlgorithmCompare extends javax.swing.JFrame {
 
         lowerSetting.setText("-5");
         lowerSetting.setToolTipText("");
+        lowerSetting.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lowerSettingActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("Lower");
 
@@ -383,44 +409,52 @@ public class AlgorithmCompare extends javax.swing.JFrame {
 
     private void AcceptBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AcceptBottonActionPerformed
         // TODO add your handling code here:
-        int NpParams = Integer.parseInt(NPsetting.getText().trim());
-        double FParams = Double.parseDouble(FPsetting.getText().trim());
-        double CRParams = Double.parseDouble(CRsetting.getText().trim());
-        int runsParam = Integer.parseInt(runsSetting.getText().trim());
-        int lowerParam = Integer.parseInt(lowerSetting.getText().trim());
-        int upperParam = Integer.parseInt(upperSetting.getText().trim());
-        int frequencyParam = 100;
-        int changesParam = 200;
-        int dimensionParam = 30;
-        
-        int functionParam[] = {0,0,0,0};
-            if (Sphere.isSelected()) {
-                 functionParam[0] = 1;
-                 }
-            if (Rastrigin.isSelected()) {
-                functionParam[1] = 1;
-                }
-            if (Ackley.isSelected()) {
-                functionParam[2] = 1;
-                }
-            if (Rosenbrock.isSelected()) {
-                functionParam[3] = 1;
-                }
-        if ((FeasibilitySelect.isSelected() == false ) && (EpsilonSelect.isSelected() == false) && (PenaltySelect.isSelected() == false)){
-            JOptionPane.showMessageDialog(null,"At least choice one algorithm");
+        double average=0;
+        if(NPsetting.getText().equals("") || FPsetting.getText().equals("") || runsSetting.getText().equals("") || CRsetting.getText().equals("") || lowerSetting.getText().equals("") || upperSetting.getText().equals("")) {
+        JOptionPane.showMessageDialog(null,"Parameter can't be empty");
         }
         
-        if (FeasibilitySelect.isSelected()){
-             FeasibilityRules.main(changesParam, dimensionParam, NpParams, FParams, CRParams,runsParam, lowerParam, upperParam, functionParam, frequencyParam);
-            //FeasibilityRules.main(HAND_CURSOR, SOMEBITS, NORMAL, ERROR, ERROR, functionParam, FRAMEBITS);
-        }
-        if (EpsilonSelect.isSelected()){
-            EpsilonConstrained.main(changesParam, dimensionParam, NpParams, FParams, CRParams, runsParam, lowerParam, upperParam, functionParam, frequencyParam);
-            //EpsilonConstrained.main(HAND_CURSOR, SOMEBITS, NORMAL, ERROR, ERROR, functionParam, FRAMEBITS);
-        }
-        if (PenaltySelect.isSelected()){  
-            Penalty.main(changesParam, dimensionParam, NpParams, FParams, CRParams,runsParam, lowerParam, upperParam, functionParam, frequencyParam);
-            //Penalty.main(HAND_CURSOR, SOMEBITS, NORMAL, ERROR, ERROR, functionParam, FRAMEBITS);
+        else{
+            int NpParams = Integer.parseInt(NPsetting.getText().trim());
+            double FParams = Double.parseDouble(FPsetting.getText().trim());
+            double CRParams = Double.parseDouble(CRsetting.getText().trim());
+            int runsParam = Integer.parseInt(runsSetting.getText().trim());
+            int lowerParam = Integer.parseInt(lowerSetting.getText().trim());
+            int upperParam = Integer.parseInt(upperSetting.getText().trim());
+            int frequencyParam = 100;
+            int changesParam = 200;
+            int dimensionParam = 30;
+
+            int functionParam[] = {0,0,0,0};
+                if (Sphere.isSelected()) {
+                     functionParam[0] = 1;
+                     }
+                if (Rastrigin.isSelected()) {
+                    functionParam[1] = 1;
+                    }
+                if (Ackley.isSelected()) {
+                    functionParam[2] = 1;
+                    }
+                if (Rosenbrock.isSelected()) {
+                    functionParam[3] = 1;
+                    }
+            if ((FeasibilitySelect.isSelected() == false ) && (EpsilonSelect.isSelected() == false) && (PenaltySelect.isSelected() == false)){
+                JOptionPane.showMessageDialog(null,"At least choice one algorithm");
+            }
+
+            if (FeasibilitySelect.isSelected()){
+                FeasibilityRules.main(changesParam, dimensionParam, NpParams, FParams, CRParams,runsParam, lowerParam, upperParam, functionParam, frequencyParam);
+                //FeasibilityRules.main(HAND_CURSOR, SOMEBITS, NORMAL, ERROR, ERROR, functionParam, FRAMEBITS);
+            }
+            if (EpsilonSelect.isSelected()){
+                EpsilonConstrained.main(changesParam, dimensionParam, NpParams, FParams, CRParams, runsParam, lowerParam, upperParam, functionParam, frequencyParam);
+                //EpsilonConstrained.main(HAND_CURSOR, SOMEBITS, NORMAL, ERROR, ERROR, functionParam, FRAMEBITS);
+            }
+            if (PenaltySelect.isSelected()){  
+                Penalty.main(changesParam, dimensionParam, NpParams, FParams, CRParams,runsParam, lowerParam, upperParam, functionParam, frequencyParam);
+                //Penalty.main(HAND_CURSOR, SOMEBITS, NORMAL, ERROR, ERROR, functionParam, FRAMEBITS);
+            }
+            //print average offline-error 
         }
     }//GEN-LAST:event_AcceptBottonActionPerformed
 
@@ -431,6 +465,26 @@ public class AlgorithmCompare extends javax.swing.JFrame {
     private void FPsettingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FPsettingActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_FPsettingActionPerformed
+
+    private void NPsettingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NPsettingActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NPsettingActionPerformed
+
+    private void CRsettingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CRsettingActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CRsettingActionPerformed
+
+    private void runsSettingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runsSettingActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_runsSettingActionPerformed
+
+    private void lowerSettingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lowerSettingActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lowerSettingActionPerformed
+
+    private void SphereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SphereActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SphereActionPerformed
 
     /**
      * @param args the command line arguments
@@ -498,7 +552,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    public static javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField lowerSetting;
     private javax.swing.JTextField runsSetting;
     private javax.swing.JTextField upperSetting;

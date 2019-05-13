@@ -31,6 +31,8 @@ public class EpsilonConstrained {
     double ap = .9;
     double cp = 5;      
     double Tc;
+    public static List<List<Double>>ListMError;        
+
     
     public EpsilonConstrained(int NP, int D, int numF, double CR, double ab[][], double Tc, int lowerParam, int upperParam) {
         this.NP = NP;
@@ -243,7 +245,6 @@ List <Double> getAverage(List<Double> values) {
         List<List<Double>> ListSumCV;
         List<List<Double>> ListSumCVs;
         List<List<Double>> ListFs;
-        List<List<Double>>ListMError;        
         int numChange = changesParam;
         int  MAX_t=numChange-1;
         String name = "Epsilon";
@@ -364,6 +365,19 @@ List <Double> getAverage(List<Double> values) {
                 printFileFXs((name + Sfuncion[numF] + "SumCVs"), ListSumCVs, runs);
                 printFileFXs((name + Sfuncion[numF] + "Merror"), ListMError, runs);
                 System.out.println("Averge "+getaverage(ListMError));
+                if(numF == 0){
+                    AlgorithmCompare.jTextArea1.append("Epsilon: "+ "Sphere:" + "\n");
+                }
+                if(numF == 1){
+                    AlgorithmCompare.jTextArea1.append("Epsilon: "+ "Ackley:" + "\n");
+                }
+                if(numF == 2){
+                    AlgorithmCompare.jTextArea1.append("Epsilon: "+ "Rastrigin:" + "\n");
+                }
+                if(numF == 3){
+                    AlgorithmCompare.jTextArea1.append("Epsilon: "+ "Rosenbrock:" + "\n");
+                }
+                AlgorithmCompare.jTextArea1.append(getaverage(ListMError) + "\n");
         }
     }//end of the functions
 }

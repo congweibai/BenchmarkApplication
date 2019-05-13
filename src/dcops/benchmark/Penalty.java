@@ -1,10 +1,11 @@
 
 package dcops.benchmark;
 
+import static dcops.benchmark.ConstraintGeneratorAdd.getaverage;
 import static dcops.benchmark.ConstraintGeneratorAdd.printFileFXs;
 import static dcops.benchmark.ConstraintGeneratorAdd.readFile;
 import static dcops.benchmark.ConstraintGeneratorAdd.readFileCsv;
-import static dcops.benchmark.ConstraintGeneratorAdd.getaverage;
+import static dcops.benchmark.EpsilonConstrained.ListMError;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -400,6 +401,19 @@ List <Double> getAverage(List<Double> values){
                 printFileFXs((name + Sfuncion[numF] + "SumCVs"), ListSumCVs, runs);
                 printFileFXs((name + Sfuncion[numF] + "Merror"), ListMError, runs);
                 System.out.println("Averge "+getaverage(ListMError));
+                if(numF == 0){
+                    AlgorithmCompare.jTextArea1.append("Penalty: "+ "Sphere:" + "\n");
+                }
+                if(numF == 1){
+                    AlgorithmCompare.jTextArea1.append("Penalty: "+ "Ackley:" + "\n");
+                }
+                if(numF == 2){
+                    AlgorithmCompare.jTextArea1.append("Penalty: "+ "Rastrigin:" + "\n");
+                }
+                if(numF == 3){
+                    AlgorithmCompare.jTextArea1.append("Penalty: "+ "Rosenbrock:" + "\n");
+                }
+                AlgorithmCompare.jTextArea1.append( getaverage(ListMError)+ "\n");
 
 
             }//end of the functions
