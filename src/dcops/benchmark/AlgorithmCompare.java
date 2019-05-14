@@ -49,8 +49,8 @@ public class AlgorithmCompare extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         Sphere = new javax.swing.JCheckBox();
         Ackley = new javax.swing.JCheckBox();
-        Rosenbrock = new javax.swing.JCheckBox();
         Rastrigin = new javax.swing.JCheckBox();
+        Rosenbrock = new javax.swing.JCheckBox();
         jPanel4 = new javax.swing.JPanel();
         CombinedRadio = new javax.swing.JRadioButton();
         HiperplaneRatationRadio = new javax.swing.JRadioButton();
@@ -207,10 +207,20 @@ public class AlgorithmCompare extends javax.swing.JFrame {
         });
 
         Ackley.setText("Ackley");
-
-        Rosenbrock.setText("Rosenbrock");
+        Ackley.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AckleyActionPerformed(evt);
+            }
+        });
 
         Rastrigin.setText("Rastrigin");
+        Rastrigin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RastriginActionPerformed(evt);
+            }
+        });
+
+        Rosenbrock.setText("Rosenbrock");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -411,7 +421,11 @@ public class AlgorithmCompare extends javax.swing.JFrame {
         // TODO add your handling code here:
         double average=0;
         if(NPsetting.getText().equals("") || FPsetting.getText().equals("") || runsSetting.getText().equals("") || CRsetting.getText().equals("") || lowerSetting.getText().equals("") || upperSetting.getText().equals("")) {
-        JOptionPane.showMessageDialog(null,"Parameter can't be empty");
+            JOptionPane.showMessageDialog(null,"Parameter can't be empty");
+        }
+        
+        else if(Sphere.isSelected() == false && Ackley.isSelected() == false && Rosenbrock.isSelected() == false && Rastrigin.isSelected() == false){
+            JOptionPane.showMessageDialog(null,"At least choose one function");
         }
         
         else{
@@ -485,6 +499,14 @@ public class AlgorithmCompare extends javax.swing.JFrame {
     private void SphereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SphereActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SphereActionPerformed
+
+    private void AckleyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AckleyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AckleyActionPerformed
+
+    private void RastriginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RastriginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RastriginActionPerformed
 
     /**
      * @param args the command line arguments

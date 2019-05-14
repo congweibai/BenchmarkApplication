@@ -336,15 +336,21 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Ackley"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="Rosenbrock">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Rosenbrock"/>
-          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AckleyActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="Rastrigin">
           <Properties>
             <Property name="text" type="java.lang.String" value="Rastrigin"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RastriginActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="Rosenbrock">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Rosenbrock"/>
           </Properties>
         </Component>
       </SubComponents>

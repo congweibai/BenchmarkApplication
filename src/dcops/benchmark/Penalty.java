@@ -402,16 +402,16 @@ List <Double> getAverage(List<Double> values){
                 printFileFXs((name + Sfuncion[numF] + "Merror"), ListMError, runs);
                 System.out.println("Averge "+getaverage(ListMError));
                 if(numF == 0){
-                    AlgorithmCompare.jTextArea1.append("Penalty: "+ "Sphere:" + "\n");
+                    AlgorithmCompare.jTextArea1.append("Penalty  "+ "Sphere " + "\n");
                 }
                 if(numF == 1){
-                    AlgorithmCompare.jTextArea1.append("Penalty: "+ "Ackley:" + "\n");
+                    AlgorithmCompare.jTextArea1.append("Penalty  "+ "Ackley " + "\n");
                 }
                 if(numF == 2){
-                    AlgorithmCompare.jTextArea1.append("Penalty: "+ "Rastrigin:" + "\n");
+                    AlgorithmCompare.jTextArea1.append("Penalty  "+ "Rastrigin " + "\n");
                 }
                 if(numF == 3){
-                    AlgorithmCompare.jTextArea1.append("Penalty: "+ "Rosenbrock:" + "\n");
+                    AlgorithmCompare.jTextArea1.append("Penalty  "+ "Rosenbrock " + "\n");
                 }
                 AlgorithmCompare.jTextArea1.append( getaverage(ListMError)+ "\n");
 
