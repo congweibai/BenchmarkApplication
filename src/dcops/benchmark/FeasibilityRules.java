@@ -4,6 +4,7 @@ import static dcops.benchmark.ConstraintGeneratorAdd.printFileFXs;
 import static dcops.benchmark.ConstraintGeneratorAdd.readFile;
 import static dcops.benchmark.ConstraintGeneratorAdd.readFileCsv;
 import static dcops.benchmark.ConstraintGeneratorAdd.getaverage;
+import static dcops.benchmark.ConstraintGeneratorAdd.getstd;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -310,7 +311,7 @@ public class FeasibilityRules {
                 if(numF == 3){
                     AlgorithmCompare.jTextArea1.append("Feasibility  "+ "Rosenbrock " + "\n");
                 }
-                AlgorithmCompare.jTextArea1.append( getaverage(ListMError) + "\n");
+                AlgorithmCompare.jTextArea1.append( getaverage(ListMError) +" "+getstd(ListMError)+ "\n");
             }
         }//end of the functions
     }

@@ -285,7 +285,20 @@ public static void printFileFXs(String name, List<List<Double>> listFXs, int run
             
         return average;
     }
-    
+public static double getstd(List<List<Double>>ListMError){
+    double std=0, sum=0;
+        double xmean =getaverage(ListMError);
+        for (int i = 0; i < ListMError.size(); i++) {
+                for (int j = 0; j < ListMError.get(i).size(); j++) {
+                    
+                    sum=sum+Math.pow(ListMError.get(i).get(j)-xmean, 2);
+                }        
+    }
+        System.out.println("Size std "+ListMError.size());
+        std=Math.sqrt(sum/(double)ListMError.size());
+    return std;
+}    
+
     public static void main(int changesParam, int dimensionParam,  int constraintParam, double lkParam, double ukParam,
             double lowerParam, double upperParam, double b0Param) {//b0=0, uk and lk=15
         double b0=b0Param;

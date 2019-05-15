@@ -510,7 +510,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 //            ConstraintGenerator.main(changesParam, dimensionParam, runsParam, constraintParam, lowerParam, upperParam, functionParam, algorithmParam, frequencyParam, freqDistParam, accuracyParam, solverRunsParam);
         // TODO add your handling code here:
-       bStartsFrom.setEnabled(false);
+//       bStartsFrom.setEnabled(false);
        int changesParam = Integer.parseInt(NumberOfChanges.getText().trim());
        int dimensionParam = Integer.parseInt(NumberOfDimensions.getText().trim());
        int runsParam = Integer.parseInt(NumberOfRuns.getText().trim());
