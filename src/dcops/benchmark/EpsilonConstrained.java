@@ -2,7 +2,9 @@ package dcops.benchmark;
 
 // @author maryam
 
+import static dcops.benchmark.AlgorithmCompare.CompareTable;
 import static dcops.benchmark.ConstraintGeneratorAdd.getaverage;
+import static dcops.benchmark.ConstraintGeneratorAdd.getstd;
 import static dcops.benchmark.ConstraintGeneratorAdd.printFileFXs;
 import static dcops.benchmark.ConstraintGeneratorAdd.readFile;
 import static dcops.benchmark.ConstraintGeneratorAdd.readFileCsv;
@@ -359,25 +361,56 @@ List <Double> getAverage(List<Double> values) {
                 ListSumCVs.add(DE.SumCVs);
                 ListMError.add(DE.getAverage(Merror));
             }//end of the runs 
+                
                 printFileFXs((name + Sfuncion[numF] + "Fs"), ListFs, runs);
                 printFileFXs((name + Sfuncion[numF] + "FXs"), ListFXs, runs);
                 printFileFXs((name + Sfuncion[numF] + "SumCV"), ListSumCV, runs);
                 printFileFXs((name + Sfuncion[numF] + "SumCVs"), ListSumCVs, runs);
                 printFileFXs((name + Sfuncion[numF] + "Merror"), ListMError, runs);
                 System.out.println("Averge "+getaverage(ListMError));
+                AlgorithmCompare.CompareTable.setValueAt("Epsilon", 0, 0);
                 if(numF == 0){
                     AlgorithmCompare.jTextArea1.append("Epsilon  "+ "Sphere " + "\n");
+                    AlgorithmCompare.CompareTable.setValueAt("Sphere", numF, 1);
+                    
+                    double tempAve = getaverage(ListMError);
+                    String ave=String.format("%.3f",tempAve);
+                    double tempStd = getstd(ListMError);
+                    String std=String.format("%.3f",tempStd);               
+                    AlgorithmCompare.CompareTable.setValueAt(ave+"(+-" + std +")", numF, 2);
                 }
                 if(numF == 1){
-                    AlgorithmCompare.jTextArea1.append("Epsilon  "+ "Ackley " + "\n");
+                    AlgorithmCompare.jTextArea1.append("Epsilon  "+ "Rastrigin " + "\n");
+                    AlgorithmCompare.CompareTable.setValueAt("Rastrigin", numF, 1);
+                    
+                    double tempAve = getaverage(ListMError);
+                    String ave=String.format("%.3f",tempAve);
+                    double tempStd = getstd(ListMError);
+                    String std=String.format("%.3f",tempStd);
+                    AlgorithmCompare.CompareTable.setValueAt(ave+"(+-" + std +")", numF, 2);
                 }
                 if(numF == 2){
-                    AlgorithmCompare.jTextArea1.append("Epsilon  "+ "Rastrigin " + "\n");
+                    AlgorithmCompare.jTextArea1.append("Epsilon  "+ "Ackley " + "\n");
+                    AlgorithmCompare.CompareTable.setValueAt("Ackley", numF, 1);
+                    
+                    double tempAve = getaverage(ListMError);
+                    String ave=String.format("%.3f",tempAve);
+                    double tempStd = getstd(ListMError);
+                    String std=String.format("%.3f",tempStd);
+                    AlgorithmCompare.CompareTable.setValueAt(ave+"(+-" + std +")", numF, 2);
                 }
                 if(numF == 3){
                     AlgorithmCompare.jTextArea1.append("Epsilon  "+ "Rosenbrock " + "\n");
+                    AlgorithmCompare.CompareTable.setValueAt("Rosenbrock", numF, 1);
+                    
+                    double tempAve = getaverage(ListMError);
+                    String ave=String.format("%.3f",tempAve);
+                    double tempStd = getstd(ListMError);
+                    String std=String.format("%.3f",tempStd);
+                    AlgorithmCompare.CompareTable.setValueAt(ave+"(+-" + std +")", numF, 2);
                 }
-                AlgorithmCompare.jTextArea1.append(getaverage(ListMError) + "\n");
+                AlgorithmCompare.jTextArea1.append(getaverage(ListMError) + "(+-"+getstd(ListMError)+")" + "\n");
+
         }
     }//end of the functions
 }

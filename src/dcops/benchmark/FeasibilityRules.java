@@ -1,10 +1,11 @@
 package dcops.benchmark;
 
+import static dcops.benchmark.ConstraintGeneratorAdd.getaverage;
+import static dcops.benchmark.ConstraintGeneratorAdd.getstd;
 import static dcops.benchmark.ConstraintGeneratorAdd.printFileFXs;
 import static dcops.benchmark.ConstraintGeneratorAdd.readFile;
 import static dcops.benchmark.ConstraintGeneratorAdd.readFileCsv;
-import static dcops.benchmark.ConstraintGeneratorAdd.getaverage;
-import static dcops.benchmark.ConstraintGeneratorAdd.getstd;
+import static dcops.benchmark.EpsilonConstrained.ListMError;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -299,19 +300,48 @@ public class FeasibilityRules {
                 printFileFXs((name + Sfuncion[numF] + "SumCVs"), ListSumCVs, runs);
                 printFileFXs((name + Sfuncion[numF] + "Merror"), ListMError, runs);
                 System.out.println("Averge "+getaverage(ListMError));
+                AlgorithmCompare.CompareTable.setValueAt("Feasibility", 4, 0);
                 if(numF == 0){
                     AlgorithmCompare.jTextArea1.append("Feasibility  "+ "Sphere " + "\n");
+                    AlgorithmCompare.CompareTable.setValueAt("Sphere", numF+4, 1);
+                    
+                    double tempAve = getaverage(ListMError);
+                    String ave=String.format("%.3f",tempAve);
+                    double tempStd = getstd(ListMError);
+                    String std=String.format("%.3f",tempStd);
+                    AlgorithmCompare.CompareTable.setValueAt(ave+"(+-" + std +")", numF+4, 2);
                 }
                 if(numF == 1){
-                    AlgorithmCompare.jTextArea1.append("Feasibility  "+ "Ackley " + "\n");
+                    AlgorithmCompare.jTextArea1.append("Feasibility  "+ "Rastrigin " + "\n");
+                    AlgorithmCompare.CompareTable.setValueAt("Rastrigin", numF+4, 1);
+                    
+                    double tempAve = getaverage(ListMError);
+                    String ave=String.format("%.3f",tempAve);
+                    double tempStd = getstd(ListMError);
+                    String std=String.format("%.3f",tempStd);
+                    AlgorithmCompare.CompareTable.setValueAt(ave+"(+-" + std +")", numF+4, 2);
                 }
                 if(numF == 2){
-                    AlgorithmCompare.jTextArea1.append("Feasibility  "+ "Rastrigin " + "\n");
+                    AlgorithmCompare.jTextArea1.append("Feasibility  "+ "Ackley " + "\n");
+                    AlgorithmCompare.CompareTable.setValueAt("Ackley", numF+4, 1);
+                    
+                    double tempAve = getaverage(ListMError);
+                    String ave=String.format("%.3f",tempAve);
+                    double tempStd = getstd(ListMError);
+                    String std=String.format("%.3f",tempStd);
+                    AlgorithmCompare.CompareTable.setValueAt(ave+"(+-" + std +")", numF+4, 2);
                 }
                 if(numF == 3){
                     AlgorithmCompare.jTextArea1.append("Feasibility  "+ "Rosenbrock " + "\n");
+                    AlgorithmCompare.CompareTable.setValueAt("Rosenbrock", numF+4, 1);
+                    
+                    double tempAve = getaverage(ListMError);
+                    String ave=String.format("%.3f",tempAve);
+                    double tempStd = getstd(ListMError);
+                    String std=String.format("%.3f",tempStd);
+                    AlgorithmCompare.CompareTable.setValueAt(ave+"(+-" + std +")", numF+4, 2);
                 }
-                AlgorithmCompare.jTextArea1.append( getaverage(ListMError) +" "+getstd(ListMError)+ "\n");
+                AlgorithmCompare.jTextArea1.append( getaverage(ListMError) +"(+-"+getstd(ListMError)+")" + "\n");
             }
         }//end of the functions
     }
