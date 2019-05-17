@@ -171,7 +171,7 @@ public class NewJFrame extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(NumberOfChanges, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(31, Short.MAX_VALUE)
+                        .addContainerGap(28, Short.MAX_VALUE)
                         .addComponent(jLabel8)
                         .addGap(76, 76, 76))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -359,7 +359,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         buttonGroup4.add(HiperplaneTranslationRadio);
-        HiperplaneTranslationRadio.setText("Hiperplane Translation");
+        HiperplaneTranslationRadio.setText("Hyperplane Translation");
         HiperplaneTranslationRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 HiperplaneTranslationRadioActionPerformed(evt);
@@ -367,7 +367,7 @@ public class NewJFrame extends javax.swing.JFrame {
         });
 
         buttonGroup4.add(HiperplaneRatationRadio);
-        HiperplaneRatationRadio.setText("Hiperplane Rotation");
+        HiperplaneRatationRadio.setText("Hyperplane Rotation");
 
         buttonGroup4.add(CombinedRadio);
         CombinedRadio.setSelected(true);
@@ -416,7 +416,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(HiperplaneTranslationRadio)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(HiperplaneRatationRadio)
+                .addComponent(HiperplaneRatationRadio, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(CombinedRadio)
                 .addGap(85, 85, 85)

@@ -383,7 +383,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="HiperplaneTranslationRadio" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="HiperplaneRatationRadio" min="-2" max="-2" attributes="0"/>
+                  <Component id="HiperplaneRatationRadio" min="-2" pref="23" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="CombinedRadio" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
@@ -406,15 +406,18 @@
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="buttonGroup1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Hiperplane Rotation"/>
+            <Property name="text" type="java.lang.String" value="Hyperplane Rotation"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="HiperplaneRatationRadioActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="HiperplaneTranslationRadio">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="buttonGroup1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Hiperplane Translation"/>
+            <Property name="text" type="java.lang.String" value="Hyperplane Translation"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="HiperplaneTranslationRadioActionPerformed"/>

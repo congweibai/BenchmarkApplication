@@ -12,11 +12,14 @@ import javax.swing.JOptionPane;
  *
  * @author BAICONGEI
  */
+
 public class AlgorithmCompare extends javax.swing.JFrame {
 
     /**
      * Creates new form AlgorithmCompare
      */
+    public static int[][] algMatrix = new int[3][4];
+    
     public AlgorithmCompare() {
         initComponents();
     }
@@ -259,10 +262,15 @@ public class AlgorithmCompare extends javax.swing.JFrame {
         CombinedRadio.setText("Combined");
 
         buttonGroup1.add(HiperplaneRatationRadio);
-        HiperplaneRatationRadio.setText("Hiperplane Rotation");
+        HiperplaneRatationRadio.setText("Hyperplane Rotation");
+        HiperplaneRatationRadio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HiperplaneRatationRadioActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(HiperplaneTranslationRadio);
-        HiperplaneTranslationRadio.setText("Hiperplane Translation");
+        HiperplaneTranslationRadio.setText("Hyperplane Translation");
         HiperplaneTranslationRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 HiperplaneTranslationRadioActionPerformed(evt);
@@ -287,7 +295,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(HiperplaneTranslationRadio)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(HiperplaneRatationRadio)
+                .addComponent(HiperplaneRatationRadio, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(CombinedRadio)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -448,6 +456,18 @@ public class AlgorithmCompare extends javax.swing.JFrame {
     private void AcceptBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AcceptBottonActionPerformed
         // TODO add your handling code here:
         jTextArea1.setText("");
+        for (int i = 0; i < 3; i++){
+            for (int j = 0; j < 4; j++){
+                algMatrix[i][j] = 0;
+            }
+        }
+        
+        for (int i = 0; i < 3; i++){
+            for (int j = 0; j < 12; j++){
+               CompareTable.setValueAt(" ", j, i);
+            }
+        }
+        
         double average=0;
         CompareTable.setValueAt("test",0,0);
         if(NPsetting.getText().equals("") || FPsetting.getText().equals("") || runsSetting.getText().equals("") || CRsetting.getText().equals("") || lowerSetting.getText().equals("") || upperSetting.getText().equals("")) {
@@ -456,6 +476,10 @@ public class AlgorithmCompare extends javax.swing.JFrame {
         
         else if(Sphere.isSelected() == false && Ackley.isSelected() == false && Rosenbrock.isSelected() == false && Rastrigin.isSelected() == false){
             JOptionPane.showMessageDialog(null,"At least choose one function");
+        }
+        
+        else if ((FeasibilitySelect.isSelected() == false ) && (EpsilonSelect.isSelected() == false) && (PenaltySelect.isSelected() == false)){
+            JOptionPane.showMessageDialog(null,"At least choice one algorithm");
         }
         
         else{
@@ -468,6 +492,71 @@ public class AlgorithmCompare extends javax.swing.JFrame {
             int frequencyParam = 100;
             int changesParam = 200;
             int dimensionParam = 30;
+            
+            if (FeasibilitySelect.isSelected()){
+                for(int i = 0; i <4; i++){
+                    algMatrix[0][i] = 1;
+                }
+                if(Sphere.isSelected() == false){
+                   algMatrix[0][0] = 0;
+                }
+                if(Rastrigin.isSelected()== false){
+                   algMatrix[0][1] = 0;
+                }
+                if(Ackley.isSelected() == false){
+                    algMatrix[0][2] = 0;
+                }
+                if(Rosenbrock.isSelected() == false){
+                    algMatrix[0][3] = 0;
+                }
+            }
+            
+            if (EpsilonSelect.isSelected()){
+                for(int i = 0; i <4; i++){
+                    algMatrix[1][i] = 1;
+                }
+                if(Sphere.isSelected() == false){
+                   algMatrix[1][0] = 0;
+                }
+                if(Rastrigin.isSelected()== false){
+                   algMatrix[1][1] = 0;
+                }
+                if(Ackley.isSelected() == false){
+                    algMatrix[1][2] = 0;
+                }
+                if(Rosenbrock.isSelected() == false){
+                    algMatrix[1][3] = 0;
+                }
+            }
+            
+            if (PenaltySelect.isSelected()){
+                for(int i = 0; i <4; i++){
+                    algMatrix[2][i] = 1;
+                }
+                if(Sphere.isSelected() == false){
+                   algMatrix[2][0] = 0;
+                }
+                if(Rastrigin.isSelected()== false){
+                   algMatrix[2][1] = 0;
+                }
+                if(Ackley.isSelected() == false){
+                    algMatrix[2][2] = 0;
+                }
+                if(Rosenbrock.isSelected() == false){
+                    algMatrix[2][3] = 0;
+                }
+            }
+            
+            for (int i = 0; i < 3; i++){
+                for (int j = 0; j < 4; j++){
+                    System.out.println("Test "+algMatrix[i][j]);
+                }
+                System.out.println("End ");
+            }
+//            System.out.println("Test "+algMatrix[0][0]);
+//            System.out.println("Test "+algMatrix[0][1]);
+//            System.out.println("Test "+algMatrix[0][2]);
+//            System.out.println("Test "+algMatrix[0][3]);
 
             int functionParam[] = {0,0,0,0};
                 if (Sphere.isSelected()) {
@@ -482,9 +571,6 @@ public class AlgorithmCompare extends javax.swing.JFrame {
                 if (Rosenbrock.isSelected()) {
                     functionParam[3] = 1;
                     }
-            if ((FeasibilitySelect.isSelected() == false ) && (EpsilonSelect.isSelected() == false) && (PenaltySelect.isSelected() == false)){
-                JOptionPane.showMessageDialog(null,"At least choice one algorithm");
-            }
 
             if (FeasibilitySelect.isSelected()){
                 FeasibilityRules.main(changesParam, dimensionParam, NpParams, FParams, CRParams,runsParam, lowerParam, upperParam, functionParam, frequencyParam);
@@ -537,6 +623,10 @@ public class AlgorithmCompare extends javax.swing.JFrame {
     private void RastriginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RastriginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_RastriginActionPerformed
+
+    private void HiperplaneRatationRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HiperplaneRatationRadioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HiperplaneRatationRadioActionPerformed
 
     /**
      * @param args the command line arguments
