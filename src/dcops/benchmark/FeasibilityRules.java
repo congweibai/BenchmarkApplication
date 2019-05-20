@@ -1,6 +1,7 @@
 package dcops.benchmark;
 
 import static dcops.benchmark.AlgorithmCompare.algMatrix;
+import static dcops.benchmark.AlgorithmCompare.rankMatrix;
 import static dcops.benchmark.ConstraintGeneratorAdd.getaverage;
 import static dcops.benchmark.ConstraintGeneratorAdd.getstd;
 import static dcops.benchmark.ConstraintGeneratorAdd.printFileFXs;
@@ -184,6 +185,7 @@ public class FeasibilityRules {
         DecimalFormat df = new DecimalFormat("0.000");
 
         //variables
+        int rankCount = 0;
         int MAX_Functions = functionParam.length, runs = runsParam;// variables for the experiments 
         int NP = NpParams, frequency = frequencyParam, D = dimensionParam, eval, numVec = 3, gen;
         double TIMEs = changesParam, t = 0, CR = CRParams, F = FParams;
@@ -309,6 +311,8 @@ public class FeasibilityRules {
                     AlgorithmCompare.CompareTable.setValueAt("Sphere", RowCount, 1);
                     
                     double tempAve = getaverage(ListMError);
+                    rankMatrix[rankCount] = tempAve;
+                    ++rankCount;
                     String ave=String.format("%.3f",tempAve);
                     double tempStd = getstd(ListMError);
                     String std=String.format("%.3f",tempStd);
@@ -316,33 +320,42 @@ public class FeasibilityRules {
                     
                     RowCount++;
                 }
-                if(numF == 1 && algMatrix[0][1] == 1){
+                if(numF == 1){
                     AlgorithmCompare.jTextArea1.append("Feasibility  "+ "Rastrigin " + "\n");
                     AlgorithmCompare.CompareTable.setValueAt("Rastrigin", RowCount, 1);
                     
                     double tempAve = getaverage(ListMError);
+                    rankMatrix[rankCount] = tempAve;
+                    ++rankCount;
+                    
                     String ave=String.format("%.3f",tempAve);
                     double tempStd = getstd(ListMError);
                     String std=String.format("%.3f",tempStd);
                     AlgorithmCompare.CompareTable.setValueAt(ave+"(+-" + std +")", RowCount, 2);
                     RowCount++;
                 }
-                if(numF == 2&& algMatrix[0][2] == 1){
+                if(numF == 2){
                     AlgorithmCompare.jTextArea1.append("Feasibility  "+ "Ackley " + "\n");
                     AlgorithmCompare.CompareTable.setValueAt("Ackley", RowCount, 1);
                     
                     double tempAve = getaverage(ListMError);
+                    rankMatrix[rankCount] = tempAve;
+                    ++rankCount;
+                    
                     String ave=String.format("%.3f",tempAve);
                     double tempStd = getstd(ListMError);
                     String std=String.format("%.3f",tempStd);
                     AlgorithmCompare.CompareTable.setValueAt(ave+"(+-" + std +")", RowCount, 2);
                     RowCount++;
                 }
-                if(numF == 3&& algMatrix[0][3] == 1){
+                if(numF == 3){
                     AlgorithmCompare.jTextArea1.append("Feasibility  "+ "Rosenbrock " + "\n");
                     AlgorithmCompare.CompareTable.setValueAt("Rosenbrock", RowCount, 1);
                     
                     double tempAve = getaverage(ListMError);
+                    rankMatrix[rankCount] = tempAve;
+                    ++rankCount;
+                    
                     String ave=String.format("%.3f",tempAve);
                     double tempStd = getstd(ListMError);
                     String std=String.format("%.3f",tempStd);

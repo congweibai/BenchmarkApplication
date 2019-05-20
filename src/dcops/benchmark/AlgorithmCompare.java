@@ -19,6 +19,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
      * Creates new form AlgorithmCompare
      */
     public static int[][] algMatrix = new int[3][4];
+    public static double[] rankMatrix = new double[12];
     
     public AlgorithmCompare() {
         initComponents();
@@ -368,21 +369,21 @@ public class AlgorithmCompare extends javax.swing.JFrame {
 
         CompareTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Algorithm", "Function", "Value"
+                "Algorithm", "Function", "Offine error", "Rank"
             }
         ));
         CompareTable.setToolTipText("");
@@ -460,6 +461,10 @@ public class AlgorithmCompare extends javax.swing.JFrame {
             for (int j = 0; j < 4; j++){
                 algMatrix[i][j] = 0;
             }
+        }
+        
+        for (int j = 0; j<12;j++){
+            rankMatrix[j] = -1;
         }
         
         for (int i = 0; i < 3; i++){
@@ -585,6 +590,10 @@ public class AlgorithmCompare extends javax.swing.JFrame {
                 //Penalty.main(HAND_CURSOR, SOMEBITS, NORMAL, ERROR, ERROR, functionParam, FRAMEBITS);
             }
             //print average offline-error 
+            for(int i = 0;i<12;i++){
+                AlgorithmCompare.jTextArea1.append(Double.toString(rankMatrix[i])+",");
+            }
+            
         }
     }//GEN-LAST:event_AcceptBottonActionPerformed
 
