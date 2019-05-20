@@ -6,6 +6,8 @@
 package dcops.benchmark;
 
 import static dcops.benchmark.ConstraintGeneratorAdd.getaverage;
+import static dcops.benchmark.EpsilonConstrained.ListMError;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 /**
@@ -467,7 +469,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
             rankMatrix[j] = -1;
         }
         
-        for (int i = 0; i < 3; i++){
+        for (int i = 0; i < 4; i++){
             for (int j = 0; j < 12; j++){
                CompareTable.setValueAt(" ", j, i);
             }
@@ -563,37 +565,69 @@ public class AlgorithmCompare extends javax.swing.JFrame {
 //            System.out.println("Test "+algMatrix[0][2]);
 //            System.out.println("Test "+algMatrix[0][3]);
 
+            int rankCount = 0;
             int functionParam[] = {0,0,0,0};
                 if (Sphere.isSelected()) {
                      functionParam[0] = 1;
+                     rankCount++;
                      }
                 if (Rastrigin.isSelected()) {
                     functionParam[1] = 1;
+                    rankCount++;
                     }
                 if (Ackley.isSelected()) {
                     functionParam[2] = 1;
+                    rankCount++;
                     }
                 if (Rosenbrock.isSelected()) {
                     functionParam[3] = 1;
+                    rankCount++;
                     }
-
+            int rankMult = 0;
             if (FeasibilitySelect.isSelected()){
                 FeasibilityRules.main(changesParam, dimensionParam, NpParams, FParams, CRParams,runsParam, lowerParam, upperParam, functionParam, frequencyParam);
                 //FeasibilityRules.main(HAND_CURSOR, SOMEBITS, NORMAL, ERROR, ERROR, functionParam, FRAMEBITS);
+                rankMult++;
             }
             if (EpsilonSelect.isSelected()){
                 EpsilonConstrained.main(changesParam, dimensionParam, NpParams, FParams, CRParams, runsParam, lowerParam, upperParam, functionParam, frequencyParam);
                 //EpsilonConstrained.main(HAND_CURSOR, SOMEBITS, NORMAL, ERROR, ERROR, functionParam, FRAMEBITS);
+                rankMult++;
             }
             if (PenaltySelect.isSelected()){  
                 Penalty.main(changesParam, dimensionParam, NpParams, FParams, CRParams,runsParam, lowerParam, upperParam, functionParam, frequencyParam);
                 //Penalty.main(HAND_CURSOR, SOMEBITS, NORMAL, ERROR, ERROR, functionParam, FRAMEBITS);
+                rankMult++;
             }
             //print average offline-error 
             for(int i = 0;i<12;i++){
                 AlgorithmCompare.jTextArea1.append(Double.toString(rankMatrix[i])+",");
             }
             
+            
+//            double[] rank = new double[rankMult];
+            for(int count = 0; count < rankCount;count++){
+                double[] rank = new double[rankMult];
+                int countTemp = count;
+                for(int i =0; i< rankMult;i++){
+                    rank[i] = rankMatrix[countTemp];
+                    countTemp+=rankCount;
+                    AlgorithmCompare.jTextArea1.append(Double.toString(rank[i])+",");
+                }
+                double[] rankTemp = new double[rankMult];
+                rankTemp = Arrays.copyOf(rank, rankMult);
+                Arrays.sort(rankTemp);
+
+                int rowCount = 0;
+                for(int i = 0; i < rankMult; i++){
+                    for(int j = 0; j< rankMult;j++){
+                        if(Double.valueOf(rank[i]).equals(Double.valueOf(rankTemp[j]))){
+                            CompareTable.setValueAt(j+1, rowCount+count, 3);
+                            rowCount += rankCount;
+                        }
+                    }
+                }
+            }
         }
     }//GEN-LAST:event_AcceptBottonActionPerformed
 
