@@ -157,6 +157,29 @@ public static void printFileFXs(String name, List<List<Double>> listFXs, int run
         }
         return collection;
     }
+    public static double[][] readFileCsvFs(String fileName, int runs, int numChange){
+        double [][] vector = new double[runs][numChange];
+        int i=0;
+        try {
+            //Initialise IO capabilities
+            Scanner scanner = new Scanner(new File(fileName));
+             scanner.useDelimiter(",");
+             for (int j = 0; j < runs; j++) {
+                String str = scanner.nextLine();
+                String array []=str.split(",");
+                 for (int k = 0; k < array.length; k++) {
+                     vector[j][k]=Double.valueOf(array[k]);
+                 }
+                
+            }
+        scanner.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("Unable to open file '" + fileName + "'");  
+        } catch (IOException ex) {
+            System.out.println("Error reading file '" + fileName + "'");   
+        }
+        return vector;
+    }
     
     public static double[] readFileCsv(String fileName, int numChange){
         double [] vector = new double[numChange];
