@@ -163,13 +163,15 @@ public static void printFileFXs(String name, List<List<Double>> listFXs, int run
         try {
             //Initialise IO capabilities
             Scanner scanner = new Scanner(new File(fileName));
-             scanner.useDelimiter(",");
+            scanner.useDelimiter(",");
              for (int j = 0; j < runs; j++) {
                 String str = scanner.nextLine();
                 String array []=str.split(",");
-                 for (int k = 0; k < array.length; k++) {
+                for (int k = 0; k < numChange; k++) {
+//                 for (int k = 0; k < array.length; k++) {
                      vector[j][k]=Double.valueOf(array[k]);
-                 }
+                    System.out.println(array[k]);
+                 }  
                 
             }
         scanner.close();

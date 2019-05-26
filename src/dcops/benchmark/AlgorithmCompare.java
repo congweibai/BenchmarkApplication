@@ -6,10 +6,21 @@
 package dcops.benchmark;
 
 import static dcops.benchmark.ConstraintGeneratorAdd.getaverage;
+import static dcops.benchmark.ConstraintGeneratorAdd.readFileCsvFs;
 import static dcops.benchmark.ConstraintGeneratorAdd.readFileCsv;
 import static dcops.benchmark.EpsilonConstrained.ListMError;
+import java.awt.Color;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.chart.ChartFrame;
+import org.jfree.ui.ApplicationFrame;
+
 
 /**
  *
@@ -77,6 +88,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         CompareTable = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -445,6 +457,13 @@ public class AlgorithmCompare extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(CompareTable);
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -472,6 +491,8 @@ public class AlgorithmCompare extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(99, 99, 99)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59)
+                .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -492,7 +513,9 @@ public class AlgorithmCompare extends javax.swing.JFrame {
                         .addComponent(AcceptBotton))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -680,12 +703,34 @@ public class AlgorithmCompare extends javax.swing.JFrame {
                     }
                 }
             }
-            double bestknown [] = readFileCsv("PenaltyAckleyFxs.csv",changesParam);
-            for(int i = 0;i< bestknown.length; i++){
-                    //jTextArea1.append(bestknown[i]+",");
-//                System.out.println(bestknown[i]);
-                   System.out.println(bestknown[i]); 
-            }
+//            double bestknown [] = readFileCsv("PenaltyAckleyFxs.csv",changesParam);
+//            for(int i = 0;i< bestknown.length; i++){
+//                    //jTextArea1.append(bestknown[i]+",");
+////                System.out.println(bestknown[i]);
+//                   System.out.println(bestknown[i]); 
+//            }
+            
+//            double test[][] = readFileCsvFs("PenaltyAckleyFxs.csv",runsParam,changesParam);
+//            for(int i = 0;i <runsParam;i++){
+//                for(int j = 0; j < changesParam;j++){
+//                    System.out.println(test[i][j]);
+//                }
+//                System.out.println("block");
+//            }
+            
+            //intilizia average
+//            double getAverage[] = new double[changesParam];
+//            for(int i = 0; i<changesParam;i++){
+//                getAverage[i] = 0;
+//            }
+//            for(int i = 0; i< runsParam;i++){
+//                for(int j = 0; j<changesParam;j++){
+//                getAverage[j] = getAverage[j]+ test[i][j];
+//                }
+//            }
+//            for(int i = 0; i<runsParam;i++){
+//                getAverage[i] = getAverage[i] / runsParam;
+//            }
         }
     }//GEN-LAST:event_AcceptBottonActionPerformed
 
@@ -732,6 +777,39 @@ public class AlgorithmCompare extends javax.swing.JFrame {
     private void CompareTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CompareTableMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_CompareTableMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        double bestknownAckley [] = readFileCsv("Best_KnownAckleyFxs.csv",200);
+        double bestknownRastrigin [] = readFileCsv("Best_KnownRastriginFxs.csv",200);
+        double bestknownRosenbrock [] = readFileCsv("Best_KnownRosenbrockFxs.csv",200);
+        double bestknownSphere [] = readFileCsv("Best_KnownSphereFxs.csv",200);
+            for(int i = 0;i< bestknownAckley.length; i++){
+                    //jTextArea1.append(bestknown[i]+",");
+//                   System.out.println(bestknown[i]);
+                   dataset.addValue(bestknownAckley[i], "Best_KnownAckley", String.valueOf(i));
+                   dataset.addValue(bestknownRastrigin[i], "Best_KnownRastrigin", String.valueOf(i));
+                   dataset.addValue(bestknownRosenbrock[i], "Best_KnownRosenbrock", String.valueOf(i));
+                   dataset.addValue(bestknownSphere[i], "Best_KnownSphere", String.valueOf(i));
+                   
+            }
+        JFreeChart chart = ChartFactory.createLineChart("BestKnown", "Best_KnownFourAlgorithms", "Offline Error", dataset);
+        
+//        CategoryPlot p = chart.getCategoryPlot();
+        ChartPanel chartPanel = new ChartPanel(chart);
+        
+        chartPanel.setPreferredSize(new java.awt.Dimension(900, 600));
+        ApplicationFrame f = new ApplicationFrame("Chart");
+        f.setContentPane(chartPanel);
+        f.pack();
+        f.setVisible(true);
+//        p.setRangeGridlinePaint(Color.PINK);
+//       ChartFrame frame = new ChartFrame("BestKnow",chart);
+//        frame.setVisible(true);
+//        frame.setSize(900,600);
+       
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -785,6 +863,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
     private javax.swing.JCheckBox Rosenbrock;
     private javax.swing.JCheckBox Sphere;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
