@@ -167,10 +167,15 @@ public static void printFileFXs(String name, List<List<Double>> listFXs, int run
              for (int j = 0; j < runs; j++) {
                 String str = scanner.nextLine();
                 String array []=str.split(",");
-                for (int k = 0; k < numChange; k++) {
-//                 for (int k = 0; k < array.length; k++) {
-                     vector[j][k]=Double.valueOf(array[k]);
-                    System.out.println(array[k]);
+//                for (int k = 0; k < numChange; k++) {
+                 for (int k = 0; k < array.length; k++) {
+                    if(array[k].equals(" "))
+                    {
+                    }
+                    else{
+                        vector[j][k]=Double.valueOf(array[k]);
+                    }
+//                    System.out.println(array[k]);
                  }  
                 
             }

@@ -93,7 +93,7 @@ public class SelectGUIs extends javax.swing.JFrame {
         //JProgressBar jProgressBar2 = new JProgressBar(0,20);
         
         if((generateNew.isSelected()) && (testBenchmark.isSelected() == false)){
-            new NewJFrame().setVisible(true);
+            new BenchmarkGeneration().setVisible(true);
             dispose();
         }
         
@@ -104,7 +104,7 @@ public class SelectGUIs extends javax.swing.JFrame {
         
         else if((generateNew.isSelected()) && (testBenchmark.isSelected())){
             new AlgorithmCompare().setVisible(true);
-            new NewJFrame().setVisible(true);
+            new BenchmarkGeneration().setVisible(true);
             dispose();
         }
         

@@ -208,32 +208,29 @@ public class AlgorithmCompare extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel4))
-                                .addGap(26, 26, 26)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(CRsetting)
-                                    .addComponent(FPsetting)
-                                    .addComponent(NPsetting, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel5))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel12)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel11))
-                            .addComponent(runsSetting))))
+                        .addComponent(jLabel12)
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel11))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addComponent(jLabel5)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(runsSetting))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel1)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel4))
+                                    .addGap(26, 26, 26)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(CRsetting)
+                                        .addComponent(FPsetting)
+                                        .addComponent(NPsetting, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -710,15 +707,15 @@ public class AlgorithmCompare extends javax.swing.JFrame {
 //                   System.out.println(bestknown[i]); 
 //            }
             
-//            double test[][] = readFileCsvFs("PenaltyAckleyFxs.csv",runsParam,changesParam);
-//            for(int i = 0;i <runsParam;i++){
-//                for(int j = 0; j < changesParam;j++){
-//                    System.out.println(test[i][j]);
-//                }
-//                System.out.println("block");
-//            }
-            
-            //intilizia average
+//            double test[][] = readFileCsvFs("PenaltyAckleyFs.csv",runsParam,changesParam);
+////            for(int i = 0;i <runsParam;i++){
+////                for(int j = 0; j < changesParam -1;j++){
+////                    System.out.println(test[i][j]);
+////                }
+////                System.out.println("block");
+////            }
+//            
+////            intilizia average
 //            double getAverage[] = new double[changesParam];
 //            for(int i = 0; i<changesParam;i++){
 //                getAverage[i] = 0;
@@ -778,8 +775,65 @@ public class AlgorithmCompare extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CompareTableMouseClicked
 
+    
+    public static double[] getFunctionImage(String name, int runs){
+        int runsParam = runs;
+        int changesParam = 200;
+        double test[][] = readFileCsvFs(name,runsParam,changesParam);
+//            for(int i = 0;i <runsParam;i++){
+//                for(int j = 0; j < changesParam -1;j++){
+//                    System.out.println(test[i][j]);
+//                }
+//                System.out.println("block");
+//            }
+            
+//            intilizia average
+            double getAverage[] = new double[changesParam];
+            for(int i = 0; i<changesParam;i++){
+                getAverage[i] = 0;
+            }
+            for(int i = 0; i< runsParam;i++){
+                for(int j = 0; j<changesParam;j++){
+                getAverage[j] = getAverage[j]+ test[i][j];
+//                System.out.println(getAverage[j]);
+                }
+            }
+            for(int i = 0; i<changesParam;i++){
+                getAverage[i] = getAverage[i] / runsParam;
+                System.out.println(getAverage[i]);
+            }
+        
+        return getAverage;
+    }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+        int runsParam = Integer.parseInt(runsSetting.getText().trim());
+        int changesParam = 200;
+//        double test[][] = readFileCsvFs("EpsilonRastriginFs.csv",runsParam,changesParam);
+//            for(int i = 0;i <runsParam;i++){
+//                for(int j = 0; j < changesParam -1;j++){
+//                    System.out.println(test[i][j]);
+//                }
+//                System.out.println("block");
+//            }
+            
+//            intilizia average
+//            double getAverage[] = new double[changesParam];
+//            for(int i = 0; i<changesParam;i++){
+//                getAverage[i] = 0;
+//            }
+//            for(int i = 0; i< runsParam;i++){
+//                for(int j = 0; j<changesParam;j++){
+//                getAverage[j] = getAverage[j]+ test[i][j];
+////                System.out.println(getAverage[j]);
+//                }
+//            }
+//            for(int i = 0; i<changesParam;i++){
+//                getAverage[i] = getAverage[i] / runsParam;
+//                System.out.println(getAverage[i]);
+//            }
+        double getAverage[] = getFunctionImage("EpsilonRastriginFs.csv",runsParam);
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         double bestknownAckley [] = readFileCsv("Best_KnownAckleyFxs.csv",200);
         double bestknownRastrigin [] = readFileCsv("Best_KnownRastriginFxs.csv",200);
@@ -788,10 +842,11 @@ public class AlgorithmCompare extends javax.swing.JFrame {
             for(int i = 0;i< bestknownAckley.length; i++){
                     //jTextArea1.append(bestknown[i]+",");
 //                   System.out.println(bestknown[i]);
-                   dataset.addValue(bestknownAckley[i], "Best_KnownAckley", String.valueOf(i));
+//                   dataset.addValue(bestknownAckley[i], "Best_KnownAckley", String.valueOf(i));
                    dataset.addValue(bestknownRastrigin[i], "Best_KnownRastrigin", String.valueOf(i));
-                   dataset.addValue(bestknownRosenbrock[i], "Best_KnownRosenbrock", String.valueOf(i));
-                   dataset.addValue(bestknownSphere[i], "Best_KnownSphere", String.valueOf(i));
+//                   dataset.addValue(bestknownRosenbrock[i], "Best_KnownRosenbrock", String.valueOf(i));
+//                   dataset.addValue(bestknownSphere[i], "Best_KnownSphere", String.valueOf(i));
+                   dataset.addValue(getAverage[i], "PenaltyAckley", String.valueOf(i));
                    
             }
         JFreeChart chart = ChartFactory.createLineChart("BestKnown", "Best_KnownFourAlgorithms", "Offline Error", dataset);
