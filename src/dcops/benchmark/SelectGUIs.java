@@ -34,7 +34,7 @@ public class SelectGUIs extends javax.swing.JFrame {
         generateNew = new javax.swing.JCheckBox();
         testBenchmark = new javax.swing.JCheckBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jButton1.setText("Start");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

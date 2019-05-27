@@ -20,7 +20,8 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.chart.ChartFrame;
 import org.jfree.ui.ApplicationFrame;
-
+import java.util.ArrayList; 
+import javax.swing.JFrame;
 
 /**
  *
@@ -88,9 +89,9 @@ public class AlgorithmCompare extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         CompareTable = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        ShowImage = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         EpsilonSelect.setText("Epsilon");
         EpsilonSelect.addActionListener(new java.awt.event.ActionListener() {
@@ -454,10 +455,10 @@ public class AlgorithmCompare extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(CompareTable);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ShowImage.setText("Plotting image");
+        ShowImage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ShowImageActionPerformed(evt);
             }
         });
 
@@ -481,15 +482,14 @@ public class AlgorithmCompare extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ShowImage))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(99, 99, 99)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
-                .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -507,12 +507,12 @@ public class AlgorithmCompare extends javax.swing.JFrame {
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(AcceptBotton))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(AcceptBotton)
+                            .addComponent(ShowImage, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -780,6 +780,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
         int runsParam = runs;
         int changesParam = 200;
         double test[][] = readFileCsvFs(name,runsParam,changesParam);
+//        System.out.println(test[1].length);
 //            for(int i = 0;i <runsParam;i++){
 //                for(int j = 0; j < changesParam -1;j++){
 //                    System.out.println(test[i][j]);
@@ -800,12 +801,14 @@ public class AlgorithmCompare extends javax.swing.JFrame {
             }
             for(int i = 0; i<changesParam;i++){
                 getAverage[i] = getAverage[i] / runsParam;
-                System.out.println(getAverage[i]);
+//                System.out.println(getAverage[i]);
             }
+        double[] b = new double[getAverage.length -1 ];
+    	System.arraycopy(getAverage, 0, b, 0, getAverage.length-1);
         
-        return getAverage;
+        return b;
     }
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ShowImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowImageActionPerformed
         // TODO add your handling code here:
         
         int runsParam = Integer.parseInt(runsSetting.getText().trim());
@@ -833,38 +836,234 @@ public class AlgorithmCompare extends javax.swing.JFrame {
 //                getAverage[i] = getAverage[i] / runsParam;
 //                System.out.println(getAverage[i]);
 //            }
-        double getAverage[] = getFunctionImage("EpsilonRastriginFs.csv",runsParam);
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        double bestknownAckley [] = readFileCsv("Best_KnownAckleyFxs.csv",200);
-        double bestknownRastrigin [] = readFileCsv("Best_KnownRastriginFxs.csv",200);
-        double bestknownRosenbrock [] = readFileCsv("Best_KnownRosenbrockFxs.csv",200);
-        double bestknownSphere [] = readFileCsv("Best_KnownSphereFxs.csv",200);
-            for(int i = 0;i< bestknownAckley.length; i++){
+        DefaultCategoryDataset datasetSphere = new DefaultCategoryDataset();
+        DefaultCategoryDataset datasetRastrigin = new DefaultCategoryDataset();
+        DefaultCategoryDataset datasetAckley = new DefaultCategoryDataset();
+        DefaultCategoryDataset datasetRosenbrock = new DefaultCategoryDataset();
+        
+        double[] bestknownAckley;
+        bestknownAckley = readFileCsv("Best_KnownAckleyFxs.csv",200).clone();
+        double[] bestknownRosenbrock;
+        bestknownRosenbrock = readFileCsv("Best_KnownRosenbrockFxs.csv",200).clone();
+        double[] bestknownSphere;
+        bestknownSphere = readFileCsv("Best_KnownSphereFxs.csv",200).clone();
+        double[] bestknownRastrigin;
+        bestknownRastrigin = readFileCsv("Best_KnownRastriginFxs.csv",200).clone();
+        
+        
+        if (FeasibilitySelect.isSelected()){
+//            double getAverage[] = getFunctionImage("EpsilonRastriginFs.csv",runsParam);
+            
+
+            if(Sphere.isSelected()){
+                double getAverage[] = getFunctionImage("FeasibilitySphereFs.csv",runsParam);
+                for(int i = 0;i< changesParam-1; i++){
                     //jTextArea1.append(bestknown[i]+",");
 //                   System.out.println(bestknown[i]);
 //                   dataset.addValue(bestknownAckley[i], "Best_KnownAckley", String.valueOf(i));
-                   dataset.addValue(bestknownRastrigin[i], "Best_KnownRastrigin", String.valueOf(i));
+//                   dataset.addValue(bestknownRastrigin[i], "Best_KnownRastrigin", String.valueOf(i));
 //                   dataset.addValue(bestknownRosenbrock[i], "Best_KnownRosenbrock", String.valueOf(i));
-//                   dataset.addValue(bestknownSphere[i], "Best_KnownSphere", String.valueOf(i));
-                   dataset.addValue(getAverage[i], "PenaltyAckley", String.valueOf(i));
+                   datasetSphere.addValue(getAverage[i], "FeasibilitySphere", String.valueOf(i));
                    
+            }   
+                
             }
-        JFreeChart chart = ChartFactory.createLineChart("BestKnown", "Best_KnownFourAlgorithms", "Offline Error", dataset);
+            if(Rastrigin.isSelected()){
+                double getAverage[] = getFunctionImage("FeasibilityRastriginFs.csv",runsParam);   
+                for(int i = 0;i< changesParam-1; i++){
+                   datasetRastrigin.addValue(getAverage[i], "FeasibilityRastrigin", String.valueOf(i));
+                }
+            }
+            if(Ackley.isSelected()){
+                double getAverage[] = getFunctionImage("FeasibilityAckleyFs.csv",runsParam);   
+                for(int i = 0;i< changesParam-1; i++){
+                   datasetAckley.addValue(getAverage[i], "FeasibilityAckley", String.valueOf(i));
+                }
+                    
+            }
+            if(Rosenbrock.isSelected()){
+                double getAverage[] = getFunctionImage("FeasibilityRosenbrockFs.csv",runsParam);   
+                for(int i = 0;i< changesParam-1; i++){
+                   datasetRosenbrock.addValue(getAverage[i], "FeasibilityRosenbrock", String.valueOf(i));
+                }
+                    
+            }
+                
+                
+            }
         
-//        CategoryPlot p = chart.getCategoryPlot();
-        ChartPanel chartPanel = new ChartPanel(chart);
+        if (EpsilonSelect.isSelected()){
+//            double getAverage[] = getFunctionImage("EpsilonRastriginFs.csv",runsParam);
+            
+
+            if(Sphere.isSelected()){
+                double getAverage[] = getFunctionImage("EpsilonSphereFs.csv",runsParam);
+                for(int i = 0;i< changesParam-1; i++){
+                    //jTextArea1.append(bestknown[i]+",");
+//                   System.out.println(bestknown[i]);
+//                   dataset.addValue(bestknownAckley[i], "Best_KnownAckley", String.valueOf(i));
+//                   dataset.addValue(bestknownRastrigin[i], "Best_KnownRastrigin", String.valueOf(i));
+//                   dataset.addValue(bestknownRosenbrock[i], "Best_KnownRosenbrock", String.valueOf(i));
+                   datasetSphere.addValue(getAverage[i], "EpsilonSphere", String.valueOf(i));
+                   
+            }   
+                
+            }
+            if(Rastrigin.isSelected()){
+                double getAverage[] = getFunctionImage("EpsilonRastriginFs.csv",runsParam);   
+                for(int i = 0;i< changesParam-1; i++){
+                   datasetRastrigin.addValue(getAverage[i], "EpsilonRastrigin", String.valueOf(i));
+                }
+            }
+            if(Ackley.isSelected()){
+                double getAverage[] = getFunctionImage("EpsilonAckleyFs.csv",runsParam);   
+                for(int i = 0;i< changesParam-1; i++){
+                   datasetAckley.addValue(getAverage[i], "EpsilonAckley", String.valueOf(i));
+                }
+                    
+            }
+            if(Rosenbrock.isSelected()){
+                double getAverage[] = getFunctionImage("EpsilonRosenbrockFs.csv",runsParam);   
+                for(int i = 0;i< changesParam-1; i++){
+                   datasetRosenbrock.addValue(getAverage[i], "EpsilonRosenbrock", String.valueOf(i));
+                }
+                    
+            }
+                
+        }
         
-        chartPanel.setPreferredSize(new java.awt.Dimension(900, 600));
-        ApplicationFrame f = new ApplicationFrame("Chart");
-        f.setContentPane(chartPanel);
-        f.pack();
-        f.setVisible(true);
+        if (PenaltySelect.isSelected()){
+//            double getAverage[] = getFunctionImage("EpsilonRastriginFs.csv",runsParam);
+            
+
+            if(Sphere.isSelected()){
+                double getAverage[] = getFunctionImage("PenaltySphereFs.csv",runsParam);
+                for(int i = 0;i< changesParam-1; i++){
+                    //jTextArea1.append(bestknown[i]+",");
+//                   System.out.println(bestknown[i]);
+//                   dataset.addValue(bestknownAckley[i], "Best_KnownAckley", String.valueOf(i));
+//                   dataset.addValue(bestknownRastrigin[i], "Best_KnownRastrigin", String.valueOf(i));
+//                   dataset.addValue(bestknownRosenbrock[i], "Best_KnownRosenbrock", String.valueOf(i));
+                   datasetSphere.addValue(getAverage[i], "PenaltySphere", String.valueOf(i));
+                   
+            }   
+                
+            }
+            if(Rastrigin.isSelected()){
+                double getAverage[] = getFunctionImage("PenaltyRastriginFs.csv",runsParam);   
+                for(int i = 0;i< changesParam-1; i++){
+                   datasetRastrigin.addValue(getAverage[i], "PenaltyRastrigin", String.valueOf(i));
+                }
+            }
+            if(Ackley.isSelected()){
+                double getAverage[] = getFunctionImage("PenaltyAckleyFs.csv",runsParam);   
+                for(int i = 0;i< changesParam-1; i++){
+                   datasetAckley.addValue(getAverage[i], "PenaltyAckley", String.valueOf(i));
+                }
+                    
+            }
+            if(Rosenbrock.isSelected()){
+                double getAverage[] = getFunctionImage("PenaltyRosenbrockFs.csv",runsParam);   
+                for(int i = 0;i< changesParam-1; i++){
+                   datasetRosenbrock.addValue(getAverage[i], "PenaltyRosenbrock", String.valueOf(i));
+                }
+                    
+            }
+        }
+        
+        if(Sphere.isSelected()){
+            for(int i = 0; i < changesParam;i++){
+                datasetSphere.addValue(bestknownSphere[i], "Best_KnownSphere", String.valueOf(i));
+            }
+            JFreeChart chart = ChartFactory.createLineChart("BestKnown", "Best_KnownSphere", "Offline Error", datasetSphere);
+            ChartPanel chartPanel = new ChartPanel(chart);
+
+            chartPanel.setPreferredSize(new java.awt.Dimension(900, 600));
+            JFrame f = new JFrame("Chart of Sphere");
+            f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            f.setContentPane(chartPanel);
+            f.pack();
+            f.setVisible(true);
+        }
+        if(Rastrigin.isSelected()){
+            for(int i = 0; i < changesParam;i++){
+                datasetRastrigin.addValue(bestknownRastrigin[i], "Best_KnownRastrigin", String.valueOf(i));
+            }
+         
+            JFreeChart chart = ChartFactory.createLineChart("BestKnown", "Best_KnownRastrigin", "Offline Error", datasetRastrigin);
+            ChartPanel chartPanel = new ChartPanel(chart);
+
+            chartPanel.setPreferredSize(new java.awt.Dimension(900, 600));
+            JFrame f = new JFrame("Chart of Rastrigin");
+            f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            f.setContentPane(chartPanel);
+            f.pack();
+            f.setVisible(true);
+        }
+        if(Ackley.isSelected()){
+            for(int i = 0; i < changesParam;i++){
+                datasetAckley.addValue(bestknownAckley[i], "Best_KnownAckley", String.valueOf(i));
+            }
+            
+            JFreeChart chart = ChartFactory.createLineChart("BestKnown", "Best_KnownRastrigin", "Offline Error", datasetAckley);
+            ChartPanel chartPanel = new ChartPanel(chart);
+
+            chartPanel.setPreferredSize(new java.awt.Dimension(900, 600));
+            JFrame f = new JFrame("Chart of Ackley");
+            f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            f.setContentPane(chartPanel);
+            f.pack();
+            f.setVisible(true);
+         }
+       if(Rosenbrock.isSelected()){
+            for(int i = 0; i < changesParam;i++){
+                datasetRosenbrock.addValue(bestknownRosenbrock[i], "Best_KnownRosenbrock", String.valueOf(i));
+            }
+            
+            JFreeChart chart = ChartFactory.createLineChart("BestKnown", "Best_KnownRastrigin", "Offline Error", datasetRosenbrock);
+            ChartPanel chartPanel = new ChartPanel(chart);
+
+            chartPanel.setPreferredSize(new java.awt.Dimension(900, 600));
+            JFrame f = new JFrame("Chart of Rosenbrock");
+            f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            f.setContentPane(chartPanel);
+            f.pack();
+            f.setVisible(true);
+        }
+        
+        //        CategoryPlot p = chart.getCategoryPlot();
+//        double getAverage[] = getFunctionImage("EpsilonRastriginFs.csv",runsParam);
+//        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+//        double bestknownAckley [] = readFileCsv("Best_KnownAckleyFxs.csv",200);
+//        double bestknownRastrigin [] = readFileCsv("Best_KnownRastriginFxs.csv",200);
+//        double bestknownRosenbrock [] = readFileCsv("Best_KnownRosenbrockFxs.csv",200);
+//        double bestknownSphere [] = readFileCsv("Best_KnownSphereFxs.csv",200);
+//            for(int i = 0;i< bestknownAckley.length; i++){
+//                    //jTextArea1.append(bestknown[i]+",");
+////                   System.out.println(bestknown[i]);
+////                   dataset.addValue(bestknownAckley[i], "Best_KnownAckley", String.valueOf(i));
+//                   dataset.addValue(bestknownRastrigin[i], "Best_KnownRastrigin", String.valueOf(i));
+////                   dataset.addValue(bestknownRosenbrock[i], "Best_KnownRosenbrock", String.valueOf(i));
+////                   dataset.addValue(bestknownSphere[i], "Best_KnownSphere", String.valueOf(i));
+//                   dataset.addValue(getAverage[i], "PenaltyAckley", String.valueOf(i));
+//                   
+//            }
+//        JFreeChart chart = ChartFactory.createLineChart("BestKnown", "Best_KnownFourAlgorithms", "Offline Error", dataset);
+//        
+////        CategoryPlot p = chart.getCategoryPlot();
+//        ChartPanel chartPanel = new ChartPanel(chart);
+//        
+//        chartPanel.setPreferredSize(new java.awt.Dimension(900, 600));
+//        ApplicationFrame f = new ApplicationFrame("Chart");
+//        f.setContentPane(chartPanel);
+//        f.pack();
+//        f.setVisible(true);
 //        p.setRangeGridlinePaint(Color.PINK);
 //       ChartFrame frame = new ChartFrame("BestKnow",chart);
 //        frame.setVisible(true);
 //        frame.setSize(900,600);
        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ShowImageActionPerformed
 
     /**
      * @param args the command line arguments
@@ -916,9 +1115,9 @@ public class AlgorithmCompare extends javax.swing.JFrame {
     private javax.swing.JCheckBox PenaltySelect;
     private javax.swing.JCheckBox Rastrigin;
     private javax.swing.JCheckBox Rosenbrock;
+    private javax.swing.JButton ShowImage;
     private javax.swing.JCheckBox Sphere;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
