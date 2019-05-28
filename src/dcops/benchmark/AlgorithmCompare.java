@@ -22,7 +22,11 @@ import org.jfree.chart.ChartFrame;
 import org.jfree.ui.ApplicationFrame;
 import java.util.ArrayList; 
 import javax.swing.JFrame;
-
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.axis.NumberTickUnit;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 /**
  *
  * @author BAICONGEI
@@ -836,10 +840,15 @@ public class AlgorithmCompare extends javax.swing.JFrame {
 //                getAverage[i] = getAverage[i] / runsParam;
 //                System.out.println(getAverage[i]);
 //            }
-        DefaultCategoryDataset datasetSphere = new DefaultCategoryDataset();
-        DefaultCategoryDataset datasetRastrigin = new DefaultCategoryDataset();
-        DefaultCategoryDataset datasetAckley = new DefaultCategoryDataset();
-        DefaultCategoryDataset datasetRosenbrock = new DefaultCategoryDataset();
+//        DefaultCategoryDataset datasetSphere = new DefaultCategoryDataset();
+//        DefaultCategoryDataset datasetRastrigin = new DefaultCategoryDataset();
+//        DefaultCategoryDataset datasetAckley = new DefaultCategoryDataset();
+//        DefaultCategoryDataset datasetRosenbrock = new DefaultCategoryDataset();
+        
+        XYSeriesCollection datasetSphere = new XYSeriesCollection();
+        XYSeriesCollection datasetRastrigin = new XYSeriesCollection();
+        XYSeriesCollection datasetAckley = new XYSeriesCollection();
+        XYSeriesCollection datasetRosenbrock = new XYSeriesCollection();
         
         double[] bestknownAckley;
         bestknownAckley = readFileCsv("Best_KnownAckleyFxs.csv",200).clone();
@@ -856,6 +865,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
             
 
             if(Sphere.isSelected()){
+                XYSeries series = new XYSeries("FeasibilitySphere");
                 double getAverage[] = getFunctionImage("FeasibilitySphereFs.csv",runsParam);
                 for(int i = 0;i< changesParam-1; i++){
                     //jTextArea1.append(bestknown[i]+",");
@@ -863,30 +873,34 @@ public class AlgorithmCompare extends javax.swing.JFrame {
 //                   dataset.addValue(bestknownAckley[i], "Best_KnownAckley", String.valueOf(i));
 //                   dataset.addValue(bestknownRastrigin[i], "Best_KnownRastrigin", String.valueOf(i));
 //                   dataset.addValue(bestknownRosenbrock[i], "Best_KnownRosenbrock", String.valueOf(i));
-                   datasetSphere.addValue(getAverage[i], "FeasibilitySphere", String.valueOf(i));
-                   
-            }   
-                
+                   series.add(i, getAverage[i]);       
+                }   
+                datasetSphere.addSeries(series);
             }
             if(Rastrigin.isSelected()){
+                XYSeries series = new XYSeries("FeasibilityRastrigin");
                 double getAverage[] = getFunctionImage("FeasibilityRastriginFs.csv",runsParam);   
                 for(int i = 0;i< changesParam-1; i++){
-                   datasetRastrigin.addValue(getAverage[i], "FeasibilityRastrigin", String.valueOf(i));
+                   series.add(i, getAverage[i]); 
                 }
+                datasetRastrigin.addSeries(series);
             }
             if(Ackley.isSelected()){
+                XYSeries series = new XYSeries("FeasibilityAckley");
                 double getAverage[] = getFunctionImage("FeasibilityAckleyFs.csv",runsParam);   
                 for(int i = 0;i< changesParam-1; i++){
-                   datasetAckley.addValue(getAverage[i], "FeasibilityAckley", String.valueOf(i));
+                   series.add(i, getAverage[i]);  
                 }
+                datasetAckley.addSeries(series);
                     
             }
             if(Rosenbrock.isSelected()){
+                XYSeries series = new XYSeries("FeasibilityRosenbrock");
                 double getAverage[] = getFunctionImage("FeasibilityRosenbrockFs.csv",runsParam);   
                 for(int i = 0;i< changesParam-1; i++){
-                   datasetRosenbrock.addValue(getAverage[i], "FeasibilityRosenbrock", String.valueOf(i));
+                   series.add(i, getAverage[i]);
                 }
-                    
+                datasetRosenbrock.addSeries(series);
             }
                 
                 
@@ -897,6 +911,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
             
 
             if(Sphere.isSelected()){
+                XYSeries series = new XYSeries("EpsilonSphere");
                 double getAverage[] = getFunctionImage("EpsilonSphereFs.csv",runsParam);
                 for(int i = 0;i< changesParam-1; i++){
                     //jTextArea1.append(bestknown[i]+",");
@@ -904,30 +919,33 @@ public class AlgorithmCompare extends javax.swing.JFrame {
 //                   dataset.addValue(bestknownAckley[i], "Best_KnownAckley", String.valueOf(i));
 //                   dataset.addValue(bestknownRastrigin[i], "Best_KnownRastrigin", String.valueOf(i));
 //                   dataset.addValue(bestknownRosenbrock[i], "Best_KnownRosenbrock", String.valueOf(i));
-                   datasetSphere.addValue(getAverage[i], "EpsilonSphere", String.valueOf(i));
-                   
-            }   
-                
+                   series.add(i, getAverage[i]);
+                }   
+                datasetSphere.addSeries(series);
             }
             if(Rastrigin.isSelected()){
+                XYSeries series = new XYSeries("EpsilonRastrigin");
                 double getAverage[] = getFunctionImage("EpsilonRastriginFs.csv",runsParam);   
                 for(int i = 0;i< changesParam-1; i++){
-                   datasetRastrigin.addValue(getAverage[i], "EpsilonRastrigin", String.valueOf(i));
+                   series.add(i, getAverage[i]);
                 }
+                datasetRastrigin.addSeries(series);
             }
             if(Ackley.isSelected()){
+                XYSeries series = new XYSeries("EpsilonAckley");
                 double getAverage[] = getFunctionImage("EpsilonAckleyFs.csv",runsParam);   
                 for(int i = 0;i< changesParam-1; i++){
-                   datasetAckley.addValue(getAverage[i], "EpsilonAckley", String.valueOf(i));
+                   series.add(i, getAverage[i]);
                 }
-                    
+                datasetAckley.addSeries(series);     
             }
             if(Rosenbrock.isSelected()){
+                XYSeries series = new XYSeries("EpsilonRosenbrock");
                 double getAverage[] = getFunctionImage("EpsilonRosenbrockFs.csv",runsParam);   
                 for(int i = 0;i< changesParam-1; i++){
-                   datasetRosenbrock.addValue(getAverage[i], "EpsilonRosenbrock", String.valueOf(i));
+                   series.add(i, getAverage[i]);
                 }
-                    
+                datasetRosenbrock.addSeries(series);     
             }
                 
         }
@@ -937,6 +955,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
             
 
             if(Sphere.isSelected()){
+                XYSeries series = new XYSeries("PenaltySphere");
                 double getAverage[] = getFunctionImage("PenaltySphereFs.csv",runsParam);
                 for(int i = 0;i< changesParam-1; i++){
                     //jTextArea1.append(bestknown[i]+",");
@@ -944,40 +963,54 @@ public class AlgorithmCompare extends javax.swing.JFrame {
 //                   dataset.addValue(bestknownAckley[i], "Best_KnownAckley", String.valueOf(i));
 //                   dataset.addValue(bestknownRastrigin[i], "Best_KnownRastrigin", String.valueOf(i));
 //                   dataset.addValue(bestknownRosenbrock[i], "Best_KnownRosenbrock", String.valueOf(i));
-                   datasetSphere.addValue(getAverage[i], "PenaltySphere", String.valueOf(i));
-                   
-            }   
-                
+                   series.add(i, getAverage[i]);
+                }   
+                datasetSphere.addSeries(series);   
             }
             if(Rastrigin.isSelected()){
+                XYSeries series = new XYSeries("PenaltyRastrigin");
                 double getAverage[] = getFunctionImage("PenaltyRastriginFs.csv",runsParam);   
                 for(int i = 0;i< changesParam-1; i++){
-                   datasetRastrigin.addValue(getAverage[i], "PenaltyRastrigin", String.valueOf(i));
+                   series.add(i, getAverage[i]);
                 }
+                datasetRastrigin.addSeries(series);  
             }
             if(Ackley.isSelected()){
+                XYSeries series = new XYSeries("PenaltyAckley");
                 double getAverage[] = getFunctionImage("PenaltyAckleyFs.csv",runsParam);   
                 for(int i = 0;i< changesParam-1; i++){
-                   datasetAckley.addValue(getAverage[i], "PenaltyAckley", String.valueOf(i));
+                   series.add(i, getAverage[i]);
                 }
-                    
+                datasetAckley.addSeries(series);      
             }
             if(Rosenbrock.isSelected()){
+                XYSeries series = new XYSeries("PenaltyRosenbrock");
                 double getAverage[] = getFunctionImage("PenaltyRosenbrockFs.csv",runsParam);   
                 for(int i = 0;i< changesParam-1; i++){
-                   datasetRosenbrock.addValue(getAverage[i], "PenaltyRosenbrock", String.valueOf(i));
+                   series.add(i, getAverage[i]);
                 }
-                    
+                datasetRosenbrock.addSeries(series);      
             }
         }
         
         if(Sphere.isSelected()){
+            XYSeries series = new XYSeries("Best_KnownSphere");
             for(int i = 0; i < changesParam;i++){
-                datasetSphere.addValue(bestknownSphere[i], "Best_KnownSphere", String.valueOf(i));
+                series.add(i, bestknownSphere[i]);
             }
-            JFreeChart chart = ChartFactory.createLineChart("BestKnown", "Best_KnownSphere", "Offline Error", datasetSphere);
+            datasetSphere.addSeries(series);
+//            JFreeChart chart = ChartFactory.createLineChart("Coverage Plot", "Times", "Objective Function Value", data);
+            JFreeChart chart = ChartFactory.createXYLineChart("Coverage Plot", "Times", "Objective Function Value", datasetSphere,
+                                                  PlotOrientation.VERTICAL, 
+                                                  true, true, false);
             ChartPanel chartPanel = new ChartPanel(chart);
 
+            NumberAxis xAxis = new NumberAxis();
+            xAxis.setTickUnit(new NumberTickUnit(20));
+            xAxis.setAttributedLabel("Times");
+            XYPlot plot = chart.getXYPlot();
+            plot.setDomainAxis(xAxis);
+            
             chartPanel.setPreferredSize(new java.awt.Dimension(900, 600));
             JFrame f = new JFrame("Chart of Sphere");
             f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -986,12 +1019,21 @@ public class AlgorithmCompare extends javax.swing.JFrame {
             f.setVisible(true);
         }
         if(Rastrigin.isSelected()){
+            XYSeries series = new XYSeries("Best_KnownRastrigin");
             for(int i = 0; i < changesParam;i++){
-                datasetRastrigin.addValue(bestknownRastrigin[i], "Best_KnownRastrigin", String.valueOf(i));
+                series.add(i, bestknownRastrigin[i]);
             }
-         
-            JFreeChart chart = ChartFactory.createLineChart("BestKnown", "Best_KnownRastrigin", "Offline Error", datasetRastrigin);
+            datasetRastrigin.addSeries(series);
+            JFreeChart chart = ChartFactory.createXYLineChart("Coverage Plot", "Times", "Objective Function Value", datasetRastrigin,
+                                                  PlotOrientation.VERTICAL, 
+                                                  true, true, false);
             ChartPanel chartPanel = new ChartPanel(chart);
+            
+            NumberAxis xAxis = new NumberAxis();
+            xAxis.setTickUnit(new NumberTickUnit(20));
+            xAxis.setAttributedLabel("Times");
+            XYPlot plot = chart.getXYPlot();
+            plot.setDomainAxis(xAxis);
 
             chartPanel.setPreferredSize(new java.awt.Dimension(900, 600));
             JFrame f = new JFrame("Chart of Rastrigin");
@@ -1001,11 +1043,22 @@ public class AlgorithmCompare extends javax.swing.JFrame {
             f.setVisible(true);
         }
         if(Ackley.isSelected()){
+            XYSeries series = new XYSeries("Best_KnownAckley");
             for(int i = 0; i < changesParam;i++){
-                datasetAckley.addValue(bestknownAckley[i], "Best_KnownAckley", String.valueOf(i));
+                series.add(i, bestknownAckley[i]);
             }
+            datasetAckley.addSeries(series);
             
-            JFreeChart chart = ChartFactory.createLineChart("BestKnown", "Best_KnownRastrigin", "Offline Error", datasetAckley);
+            JFreeChart chart = ChartFactory.createXYLineChart("Coverage Plot", "Times", "Objective Function Value", datasetAckley,
+                                                  PlotOrientation.VERTICAL, 
+                                                  true, true, false);
+            
+            NumberAxis xAxis = new NumberAxis();
+            xAxis.setTickUnit(new NumberTickUnit(20));
+            xAxis.setAttributedLabel("Times");
+            XYPlot plot = chart.getXYPlot();
+            plot.setDomainAxis(xAxis);
+            
             ChartPanel chartPanel = new ChartPanel(chart);
 
             chartPanel.setPreferredSize(new java.awt.Dimension(900, 600));
@@ -1016,11 +1069,21 @@ public class AlgorithmCompare extends javax.swing.JFrame {
             f.setVisible(true);
          }
        if(Rosenbrock.isSelected()){
+            XYSeries series = new XYSeries("Best_KnownRosenbrock");
             for(int i = 0; i < changesParam;i++){
-                datasetRosenbrock.addValue(bestknownRosenbrock[i], "Best_KnownRosenbrock", String.valueOf(i));
+                series.add(i, bestknownRosenbrock[i]);
             }
+            datasetRosenbrock.addSeries(series);
+            JFreeChart chart = ChartFactory.createXYLineChart("Coverage Plot", "Times", "Objective Function Value", datasetRosenbrock,
+                                                  PlotOrientation.VERTICAL, 
+                                                  true, true, false);
             
-            JFreeChart chart = ChartFactory.createLineChart("BestKnown", "Best_KnownRastrigin", "Offline Error", datasetRosenbrock);
+            NumberAxis xAxis = new NumberAxis();
+            xAxis.setTickUnit(new NumberTickUnit(20));
+            xAxis.setAttributedLabel("Times");
+            XYPlot plot = chart.getXYPlot();
+            plot.setDomainAxis(xAxis);
+            
             ChartPanel chartPanel = new ChartPanel(chart);
 
             chartPanel.setPreferredSize(new java.awt.Dimension(900, 600));
