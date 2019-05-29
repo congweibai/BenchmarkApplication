@@ -27,6 +27,7 @@ import org.jfree.chart.axis.NumberTickUnit;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
+import org.jfree.chart.renderer.xy.XYItemRenderer;
 /**
  *
  * @author BAICONGEI
@@ -1006,16 +1007,19 @@ public class AlgorithmCompare extends javax.swing.JFrame {
             }
             datasetSphere.addSeries(series);
 //            JFreeChart chart = ChartFactory.createLineChart("Coverage Plot", "Times", "Objective Function Value", data);
-            JFreeChart chart = ChartFactory.createXYLineChart("Coverage Plot", "Times", "Objective Function Value", datasetSphere,
+            JFreeChart chart = ChartFactory.createXYLineChart("Coverage Plot of Sphere", "Times", "Objective Function Value", datasetSphere,
                                                   PlotOrientation.VERTICAL, 
                                                   true, true, false);
             ChartPanel chartPanel = new ChartPanel(chart);
+            int seriesCount = datasetSphere.getSeriesCount();
 
             NumberAxis xAxis = new NumberAxis();
             xAxis.setTickUnit(new NumberTickUnit(20));
             xAxis.setAttributedLabel("Times");
             XYPlot plot = chart.getXYPlot();
             plot.setDomainAxis(xAxis);
+            XYItemRenderer renderer = chart.getXYPlot().getRenderer();
+            renderer.setSeriesPaint(seriesCount-1, Color.BLACK);
             
             chartPanel.setPreferredSize(new java.awt.Dimension(900, 600));
             JFrame f = new JFrame("Chart of Sphere");
@@ -1030,9 +1034,11 @@ public class AlgorithmCompare extends javax.swing.JFrame {
                 series.add(i, bestknownRastrigin[i]);
             }
             datasetRastrigin.addSeries(series);
-            JFreeChart chart = ChartFactory.createXYLineChart("Coverage Plot", "Times", "Objective Function Value", datasetRastrigin,
+            JFreeChart chart = ChartFactory.createXYLineChart("Coverage Plot of Rastrigin", "Times", "Objective Function Value", datasetRastrigin,
                                                   PlotOrientation.VERTICAL, 
                                                   true, true, false);
+            
+            int seriesCount = datasetRastrigin.getSeriesCount();
             ChartPanel chartPanel = new ChartPanel(chart);
             
             NumberAxis xAxis = new NumberAxis();
@@ -1040,6 +1046,8 @@ public class AlgorithmCompare extends javax.swing.JFrame {
             xAxis.setAttributedLabel("Times");
             XYPlot plot = chart.getXYPlot();
             plot.setDomainAxis(xAxis);
+            XYItemRenderer renderer = chart.getXYPlot().getRenderer();
+            renderer.setSeriesPaint(seriesCount-1, Color.BLACK);
 
             chartPanel.setPreferredSize(new java.awt.Dimension(900, 600));
             JFrame f = new JFrame("Chart of Rastrigin");
@@ -1055,15 +1063,18 @@ public class AlgorithmCompare extends javax.swing.JFrame {
             }
             datasetAckley.addSeries(series);
             
-            JFreeChart chart = ChartFactory.createXYLineChart("Coverage Plot", "Times", "Objective Function Value", datasetAckley,
+            JFreeChart chart = ChartFactory.createXYLineChart("Coverage Plot of Ackley", "Times", "Objective Function Value", datasetAckley,
                                                   PlotOrientation.VERTICAL, 
                                                   true, true, false);
+            int seriesCount = datasetAckley.getSeriesCount();
             
             NumberAxis xAxis = new NumberAxis();
             xAxis.setTickUnit(new NumberTickUnit(20));
             xAxis.setAttributedLabel("Times");
             XYPlot plot = chart.getXYPlot();
             plot.setDomainAxis(xAxis);
+            XYItemRenderer renderer = chart.getXYPlot().getRenderer();
+            renderer.setSeriesPaint(seriesCount-1, Color.BLACK);
             
             ChartPanel chartPanel = new ChartPanel(chart);
 
@@ -1080,15 +1091,19 @@ public class AlgorithmCompare extends javax.swing.JFrame {
                 series.add(i, bestknownRosenbrock[i]);
             }
             datasetRosenbrock.addSeries(series);
-            JFreeChart chart = ChartFactory.createXYLineChart("Coverage Plot", "Times", "Objective Function Value", datasetRosenbrock,
+            JFreeChart chart = ChartFactory.createXYLineChart("Coverage Plot of Rosenbrock", "Times", "Objective Function Value", datasetRosenbrock,
                                                   PlotOrientation.VERTICAL, 
                                                   true, true, false);
+            int seriesCount = datasetRosenbrock.getSeriesCount();
             
             NumberAxis xAxis = new NumberAxis();
             xAxis.setTickUnit(new NumberTickUnit(20));
             xAxis.setAttributedLabel("Times");
             XYPlot plot = chart.getXYPlot();
             plot.setDomainAxis(xAxis);
+            XYItemRenderer renderer = chart.getXYPlot().getRenderer();
+            renderer.setSeriesPaint(seriesCount-1, Color.BLACK);
+
             
             ChartPanel chartPanel = new ChartPanel(chart);
 
