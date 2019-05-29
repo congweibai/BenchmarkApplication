@@ -458,6 +458,12 @@ public class AlgorithmCompare extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(CompareTable);
+        if (CompareTable.getColumnModel().getColumnCount() > 0) {
+            CompareTable.getColumnModel().getColumn(0).setPreferredWidth(30);
+            CompareTable.getColumnModel().getColumn(1).setPreferredWidth(40);
+            CompareTable.getColumnModel().getColumn(2).setPreferredWidth(119);
+            CompareTable.getColumnModel().getColumn(3).setPreferredWidth(7);
+        }
 
         ShowImage.setText("Plotting image");
         ShowImage.addActionListener(new java.awt.event.ActionListener() {

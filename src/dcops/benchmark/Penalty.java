@@ -427,9 +427,9 @@ List <Double> getAverage(List<Double> values){
                     rankMatrix[rankCount] = tempAve;
                     ++rankCount;
                     
-                    String ave=String.format("%.3f",tempAve);
+                    String ave=String.format("%.2f",tempAve);
                     double tempStd = getstd(ListMError);
-                    String std=String.format("%.3f",tempStd);
+                    String std=String.format("%.2f",tempStd);
                     AlgorithmCompare.CompareTable.setValueAt(ave+"(+-" + std +")", RowCount, 2);
                     RowCount++;
                 }
@@ -455,9 +455,9 @@ List <Double> getAverage(List<Double> values){
                     rankMatrix[rankCount] = tempAve;
                     ++rankCount;
                     
-                    String ave=String.format("%.3f",tempAve);
+                    String ave=String.format("%.2f",tempAve);
                     double tempStd = getstd(ListMError);
-                    String std=String.format("%.3f",tempStd);
+                    String std=String.format("%.2f",tempStd);
                     AlgorithmCompare.CompareTable.setValueAt(ave+"(+-" + std +")", RowCount, 2);
                     RowCount++;
                 }
@@ -469,9 +469,9 @@ List <Double> getAverage(List<Double> values){
                     rankMatrix[rankCount] = tempAve;
                     ++rankCount;
                     
-                    String ave=String.format("%.3f",tempAve);
+                    String ave=String.format("%.2f",tempAve);
                     double tempStd = getstd(ListMError);
-                    String std=String.format("%.3f",tempStd);
+                    String std=String.format("%.2f",tempStd);
                     AlgorithmCompare.CompareTable.setValueAt(ave+"(+-" + std +")", RowCount, 2);
                     RowCount++;
                 }
