@@ -34,13 +34,6 @@ public class BenchmarkGeneration extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        try {
-            buttonGroup1 =(javax.swing.ButtonGroup)java.beans.Beans.instantiate(getClass().getClassLoader(), "dcops/benchmark.NewJFrame_buttonGroup1");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (java.io.IOException e) {
-            e.printStackTrace();
-        }
         buttonGroup2 = new javax.swing.ButtonGroup();
         buttonGroup3 = new javax.swing.ButtonGroup();
         buttonGroup4 = new javax.swing.ButtonGroup();
@@ -527,7 +520,7 @@ public class BenchmarkGeneration extends javax.swing.JFrame {
         double lowerParam = Double.parseDouble(LowerBounds.getText().trim());
         double upperParam = Double.parseDouble(UpperBounds.getText().trim());
         
-        int functionParam[] = {0,0,0,0,0};
+        int functionParam[] = {0,0,0,0,0,0};
         if (Sphere.isSelected()) {
             functionParam[0] = 1;
             }
@@ -574,8 +567,8 @@ public class BenchmarkGeneration extends javax.swing.JFrame {
         //int frequencyParam = 0 ;
         //int solverRunsParam = 0;
         //DE_Best_knowAdd.main(changesParam, dimensionParam, runsParam, constraintParam, lowerParam, upperParam, functionParam, algorithmParam, frequencyParam, freqDistParam, accuracyParam, solverRunsParam); 
-        DE_Best_knowAdd.main(changesParam,dimensionParam,functionParam,Max_EvalParam,RunsParam);
         ConstraintGeneratorAdd.main(changesParam, dimensionParam, constraintParam, lk, uk, lowerParam, upperParam, bSetting);
+        DE_Best_knowAdd.main(changesParam,dimensionParam,functionParam,Max_EvalParam,RunsParam);
         
 
         
@@ -715,7 +708,6 @@ public class BenchmarkGeneration extends javax.swing.JFrame {
     private javax.swing.JRadioButton bEqualToZero;
     private javax.swing.JRadioButton bSet;
     private javax.swing.JTextField bStartsFrom;
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;

@@ -578,9 +578,9 @@ public class AlgorithmCompare extends javax.swing.JFrame {
             int runsParam = Integer.parseInt(runsSetting.getText().trim());
             int lowerParam = Integer.parseInt(lowerSetting.getText().trim());
             int upperParam = Integer.parseInt(upperSetting.getText().trim());
-            int frequencyParam = 100;
-            int changesParam = 200;
-            int dimensionParam = 30;
+            int frequencyParam = 1000;// taken from the user 
+            int changesParam = 200;//taken from the file 
+            int dimensionParam = 30;//taken from the user 
             
             if (FeasibilitySelect.isSelected()){
                 for(int i = 0; i <4; i++){

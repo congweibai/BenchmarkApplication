@@ -5,8 +5,8 @@
  */
 package dcops.benchmark;
 
-import static dcops.benchmark.ConstraintGenerator.readFile;
-import static dcops.benchmark.ConstraintGenerator.printFileFXs;
+import static dcops.benchmark.ConstraintGeneratorAdd.readFile;
+import static dcops.benchmark.ConstraintGeneratorAdd.printFileFXs;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -133,7 +133,7 @@ public static void printFileFXsNew(String name, List<Double> listFXs, int times)
         DecimalFormat df = new DecimalFormat("0.000");
         
         //variables
-        int MAX_Functions = 6, runs = RunsParam;// variables for the experiments 
+        int MAX_Functions = Sfuncion.length, runs = RunsParam;// variables for the experiments 
         int NP = 20, D = dimensionParam, eval, numVec = 3, gen;
         double TIMEs = changesParam, t = 0, CR = 0.3, F, betamin = .2, betamax = .8;
         double old[];

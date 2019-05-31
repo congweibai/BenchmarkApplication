@@ -108,7 +108,7 @@ public static void printFileFXs(String name, List<List<Double>> listFXs, int run
     }    
 
     public static double[][] readFile(String fileName, int numChange, int numVars){
-        String lineIter [] = new String[numChange];
+        String lineIter [] = new String[numChange+1];
         char lineDouble [] = new char[8];
         char lineDoubA [] = new char[5];
         fileName = fileName + ".txt";
@@ -125,6 +125,7 @@ public static void printFileFXs(String name, List<List<Double>> listFXs, int run
             }
     
             int i = 0;
+            
                 while((lineIter[i] = bufferedReader.readLine()) != null) {
                     char lineParse[] = lineIter[i].toCharArray();
                     
@@ -334,6 +335,10 @@ public static double getstd(List<List<Double>>ListMError){
             double lowerParam, double upperParam, double b0Param) {//b0=0, uk and lk=15
         double b0=b0Param;
         double lk=lkParam, uk=ukParam; 
+        System.out.println("==================");
+        System.out.println("changesParam "+changesParam );
+        System.out.println("==================");
+        
         int numChange = changesParam;
         int numVars = dimensionParam;
         double minpos = lowerParam, maxpos = upperParam;
