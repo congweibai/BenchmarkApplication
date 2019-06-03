@@ -6,6 +6,7 @@ import static dcops.benchmark.ConstraintGeneratorAdd.getaverage;
 import static dcops.benchmark.ConstraintGeneratorAdd.getstd;
 import static dcops.benchmark.ConstraintGeneratorAdd.printFileFXs;
 import static dcops.benchmark.ConstraintGeneratorAdd.readFile;
+import static dcops.benchmark.ConstraintGeneratorAdd.readFileParam;
 import static dcops.benchmark.ConstraintGeneratorAdd.readFileCsv;
 import static dcops.benchmark.EpsilonConstrained.ListMError;
 import java.text.DecimalFormat;
@@ -214,6 +215,10 @@ public class FeasibilityRules {
                 ListFs = new ArrayList<List<Double>>();//M:added for keeping list of f(objective function) after every time change
                 ListMError = new ArrayList<List<Double>>();
                 String fileName = "ConstraintSet";
+//                int paramsFile[]= readFileParam(fileName);
+//                System.out.println("================");
+//                System.out.println("paramsFile[0]= "+paramsFile[0]+"  paramsFile[1]= "+paramsFile[1]);
+//                System.out.println("================");
 //                double bestknown [] = readFileCsv("Best_Known"+Sfuncion[numF]+"Fxs.csv",numChange);
                 double bestknown [] = readFileCsv("Best_Known"+Sfuncion[numF]+"Fxs.csv",numChange);
                 double ab[][] = readFile(fileName, numChange, D);
@@ -307,7 +312,7 @@ public class FeasibilityRules {
                 System.out.println("Averge "+getaverage(ListMError));
                 AlgorithmCompare.CompareTable.setValueAt("Feasibility", 0, 0);
                 if(numF == 0 && algMatrix[0][0] == 1){
-                    AlgorithmCompare.jTextArea1.append("Feasibility  "+ "Sphere " + "\n");
+//                    AlgorithmCompare.jTextArea1.append("Feasibility  "+ "Sphere " + "\n");
                     AlgorithmCompare.CompareTable.setValueAt("Sphere", RowCount, 1);
                     
                     double tempAve = getaverage(ListMError);
@@ -321,7 +326,7 @@ public class FeasibilityRules {
                     RowCount++;
                 }
                 if(numF == 1){
-                    AlgorithmCompare.jTextArea1.append("Feasibility  "+ "Rastrigin " + "\n");
+//                    AlgorithmCompare.jTextArea1.append("Feasibility  "+ "Rastrigin " + "\n");
                     AlgorithmCompare.CompareTable.setValueAt("Rastrigin", RowCount, 1);
                     
                     double tempAve = getaverage(ListMError);
@@ -335,7 +340,7 @@ public class FeasibilityRules {
                     RowCount++;
                 }
                 if(numF == 2){
-                    AlgorithmCompare.jTextArea1.append("Feasibility  "+ "Ackley " + "\n");
+//                    AlgorithmCompare.jTextArea1.append("Feasibility  "+ "Ackley " + "\n");
                     AlgorithmCompare.CompareTable.setValueAt("Ackley", RowCount, 1);
                     
                     double tempAve = getaverage(ListMError);
@@ -349,7 +354,7 @@ public class FeasibilityRules {
                     RowCount++;
                 }
                 if(numF == 3){
-                    AlgorithmCompare.jTextArea1.append("Feasibility  "+ "Rosenbrock " + "\n");
+//                    AlgorithmCompare.jTextArea1.append("Feasibility  "+ "Rosenbrock " + "\n");
                     AlgorithmCompare.CompareTable.setValueAt("Rosenbrock", RowCount, 1);
                     
                     double tempAve = getaverage(ListMError);
@@ -362,7 +367,7 @@ public class FeasibilityRules {
                     AlgorithmCompare.CompareTable.setValueAt(ave+"(+-" + std +")", RowCount, 2);
                     RowCount++;
                 }
-                AlgorithmCompare.jTextArea1.append( getaverage(ListMError) +"(+-"+getstd(ListMError)+")" + "\n");
+//                AlgorithmCompare.jTextArea1.append( getaverage(ListMError) +"(+-"+getstd(ListMError)+")" + "\n");
             }
         }//end of the functions
     }

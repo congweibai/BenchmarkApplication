@@ -420,7 +420,7 @@ List <Double> getAverage(List<Double> values){
                 System.out.println("Averge "+getaverage(ListMError));
                 AlgorithmCompare.CompareTable.setValueAt("Penalty", tempRow, 0);
                 if(numF == 0){
-                    AlgorithmCompare.jTextArea1.append("Penalty  "+ "Sphere " + "\n");
+//                    AlgorithmCompare.jTextArea1.append("Penalty  "+ "Sphere " + "\n");
                     AlgorithmCompare.CompareTable.setValueAt("Sphere", RowCount, 1);
                     
                     double tempAve = getaverage(ListMError);
@@ -434,7 +434,7 @@ List <Double> getAverage(List<Double> values){
                     RowCount++;
                 }
                 if(numF == 1){
-                    AlgorithmCompare.jTextArea1.append("Penalty  "+ "Rastrigin " + "\n");
+//                    AlgorithmCompare.jTextArea1.append("Penalty  "+ "Rastrigin " + "\n");
                     AlgorithmCompare.CompareTable.setValueAt("Rastrigin", RowCount, 1);
                     
                     double tempAve = getaverage(ListMError);
@@ -448,7 +448,7 @@ List <Double> getAverage(List<Double> values){
                     RowCount++;
                 }
                 if(numF == 2){
-                    AlgorithmCompare.jTextArea1.append("Penalty  "+ "Ackley " + "\n");
+//                    AlgorithmCompare.jTextArea1.append("Penalty  "+ "Ackley " + "\n");
                     AlgorithmCompare.CompareTable.setValueAt("Ackley", RowCount, 1);
                     
                     double tempAve = getaverage(ListMError);
@@ -462,7 +462,7 @@ List <Double> getAverage(List<Double> values){
                     RowCount++;
                 }
                 if(numF == 3){
-                    AlgorithmCompare.jTextArea1.append("Penalty  "+ "Rosenbrock " + "\n");
+//                    AlgorithmCompare.jTextArea1.append("Penalty  "+ "Rosenbrock " + "\n");
                     AlgorithmCompare.CompareTable.setValueAt("Rosenbrock", RowCount, 1);
                     
                     double tempAve = getaverage(ListMError);
@@ -475,7 +475,7 @@ List <Double> getAverage(List<Double> values){
                     AlgorithmCompare.CompareTable.setValueAt(ave+"(+-" + std +")", RowCount, 2);
                     RowCount++;
                 }
-                AlgorithmCompare.jTextArea1.append( getaverage(ListMError)+ "(+-"+getstd(ListMError)+")" + "\n");
+//                AlgorithmCompare.jTextArea1.append( getaverage(ListMError)+ "(+-"+getstd(ListMError)+")" + "\n");
 
 
             }//end of the functions

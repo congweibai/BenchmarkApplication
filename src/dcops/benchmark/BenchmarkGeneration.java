@@ -77,8 +77,6 @@ public class BenchmarkGeneration extends javax.swing.JFrame {
         RunTimes = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         jLabel1.setText("DCOPs Benchmark");
         jLabel1.setRequestFocusEnabled(false);
@@ -94,7 +92,8 @@ public class BenchmarkGeneration extends javax.swing.JFrame {
 
         jLabel4.setText("Numer of Changes:");
 
-        NumberOfChanges.setText("200");
+        NumberOfChanges.setText("100");
+        NumberOfChanges.setToolTipText("");
         NumberOfChanges.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NumberOfChangesActionPerformed(evt);
@@ -242,6 +241,7 @@ public class BenchmarkGeneration extends javax.swing.JFrame {
         Rosenbrock.setText("Rosenbrock");
 
         buttonGroup3.add(bEqualToZero);
+        bEqualToZero.setSelected(true);
         bEqualToZero.setText("b=0");
         bEqualToZero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -252,7 +252,6 @@ public class BenchmarkGeneration extends javax.swing.JFrame {
         jLabel14.setText("or");
 
         buttonGroup3.add(bSet);
-        bSet.setSelected(true);
         bSet.setText("b starts");
         bSet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -270,12 +269,14 @@ public class BenchmarkGeneration extends javax.swing.JFrame {
 
         jLabel16.setText("Upper_k:");
 
+        LowerK.setText("-5");
         LowerK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LowerKActionPerformed(evt);
             }
         });
 
+        UpperK.setText("5");
         UpperK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UpperKActionPerformed(evt);
@@ -370,6 +371,7 @@ public class BenchmarkGeneration extends javax.swing.JFrame {
 
         jLabel13.setText("Time of Runs:");
 
+        MaxEvaluations.setText("10000");
         MaxEvaluations.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MaxEvaluationsActionPerformed(evt);
@@ -395,10 +397,12 @@ public class BenchmarkGeneration extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                             .addComponent(jLabel7)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(RunTimes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(MaxEvaluations, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addGap(0, 0, Short.MAX_VALUE)
+                                    .addComponent(RunTimes, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(MaxEvaluations)))
                         .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(HiperplaneTranslationRadio)))
                 .addContainerGap(87, Short.MAX_VALUE))
@@ -561,7 +565,6 @@ public class BenchmarkGeneration extends javax.swing.JFrame {
         
         //
         //unshown in GUI
-        JOptionPane.showMessageDialog(null,"Constrains and Optimal per change Files sucessfully generate.");
         //int algorithmParam[] = {0,0,0,1};
         //int accuracyParam = 100;
         //int frequencyParam = 0 ;
@@ -569,10 +572,10 @@ public class BenchmarkGeneration extends javax.swing.JFrame {
         //DE_Best_knowAdd.main(changesParam, dimensionParam, runsParam, constraintParam, lowerParam, upperParam, functionParam, algorithmParam, frequencyParam, freqDistParam, accuracyParam, solverRunsParam); 
         ConstraintGeneratorAdd.main(changesParam, dimensionParam, constraintParam, lk, uk, lowerParam, upperParam, bSetting);
         DE_Best_knowAdd.main(changesParam,dimensionParam,functionParam,Max_EvalParam,RunsParam);
-        
+        JOptionPane.showMessageDialog(null,"Constrains and Optimal per change Files sucessfully generate.");
 
         
-        System.exit(0);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void HiperplaneTranslationRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HiperplaneTranslationRadioActionPerformed

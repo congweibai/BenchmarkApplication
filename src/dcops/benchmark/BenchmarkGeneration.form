@@ -9,9 +9,6 @@
     <Component class="javax.swing.ButtonGroup" name="buttonGroup4">
     </Component>
   </NonVisualComponents>
-  <Properties>
-    <Property name="defaultCloseOperation" type="int" value="2"/>
-  </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
@@ -226,7 +223,8 @@
         </Component>
         <Component class="javax.swing.JTextField" name="NumberOfChanges">
           <Properties>
-            <Property name="text" type="java.lang.String" value="200"/>
+            <Property name="text" type="java.lang.String" value="100"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NumberOfChangesActionPerformed"/>
@@ -428,6 +426,7 @@
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="buttonGroup3"/>
             </Property>
+            <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="b=0"/>
           </Properties>
           <Events>
@@ -444,7 +443,6 @@
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="buttonGroup3"/>
             </Property>
-            <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="b starts"/>
           </Properties>
           <Events>
@@ -467,11 +465,17 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="LowerK">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="-5"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LowerKActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="UpperK">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="5"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpperKActionPerformed"/>
           </Events>
@@ -506,10 +510,13 @@
                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="RunTimes" alignment="1" min="-2" pref="46" max="-2" attributes="0"/>
-                                  <Component id="MaxEvaluations" alignment="1" min="-2" pref="46" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Component id="RunTimes" min="-2" pref="46" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="MaxEvaluations" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -584,6 +591,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="MaxEvaluations">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="10000"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MaxEvaluationsActionPerformed"/>
           </Events>

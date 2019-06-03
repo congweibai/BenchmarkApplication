@@ -107,12 +107,46 @@ public static void printFileFXs(String name, List<List<Double>> listFXs, int run
         }
     }    
 
+    public static int [] readFileParam(String fileName){
+        fileName = fileName + ".txt";
+        int paramsFile[]= new int[2];
+        try {
+            //Initialise IO capabilities
+            FileReader fileReader = new FileReader(fileName);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            
+            //Skipping the first lines
+            int i=0;
+            for (int m = 0; m < 5; m++) {
+                String lineIter,subString;
+                lineIter=bufferedReader.readLine();  
+                if(m==1||m==3){  
+                  System.out.println("lineIter  "+lineIter+" size "+lineIter.length() );
+                int iend = lineIter.indexOf(":");
+                subString= lineIter.substring(iend+2,lineIter.length());
+                  System.out.println("subString "+subString+" size "+subString.length()+ " iend "+iend);
+                paramsFile[i]=Integer.valueOf(subString);
+                i++;
+              }
+            }
+    
+            
+            bufferedReader.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("Unable to open file '" + fileName + "'");  
+        } catch (IOException ex) {
+            System.out.println("Error reading file '" + fileName + "'");   
+        }
+            return paramsFile;
+    
+    }
+
+
     public static double[][] readFile(String fileName, int numChange, int numVars){
         String lineIter [] = new String[numChange+1];
         char lineDouble [] = new char[8];
         char lineDoubA [] = new char[5];
         fileName = fileName + ".txt";
-        
         double [][] collection = new double[numChange][numVars+1];
         try {
             //Initialise IO capabilities
@@ -199,6 +233,7 @@ public static void printFileFXs(String name, List<List<Double>> listFXs, int run
              scanner.useDelimiter(",");
         while(scanner.hasNext()&&i<numChange){
             vector[i]= Double.valueOf(scanner.next());
+//            System.out.println("vector[i]" + vector[i]);
             i++;    
         }
         scanner.close();
@@ -243,8 +278,8 @@ public static void printFileFXs(String name, List<List<Double>> listFXs, int run
             PrintWriter pw = new PrintWriter(bw);
             pw.append("Problem name: "+name +"\n");
             pw.append("Number of times: "+times +"\n");
-            pw.append("Lower value of k: "+lk +"\n");
-            pw.append("Upper value of k: "+uk +"\n");
+            pw.append("Lower value of k: "+lk + "  Upper value of k: "+uk+"\n");
+            pw.append("Dimension: "+vars +"\n");
             pw.append("Times    b       a \n");
             DecimalFormat dec = new DecimalFormat("#000.000");
             DecimalFormat deca = new DecimalFormat("#0.000");

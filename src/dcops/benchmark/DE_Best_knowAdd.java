@@ -251,7 +251,8 @@ public static void printFileFXsNew(String name, List<Double> listFXs, int times)
             System.out.println("ListFXs.size()  "+ListFXs.size());
             printFileFXsNew((name + Sfuncion[numF] + "Fxs"), ListFXs,ListFXs.size());
             printFileFXsNew((name + Sfuncion[numF] + "SumCV"), ListSumCV, ListFXs.size());
-            printFileFXs((name + Sfuncion[numF] + "Solutions"), ListSolutions, D);//we need the dimension of the problem
+                //System.out.println("ListSolutions"+ListSolutions.size()+" D "+D);
+            printFileFXs((name + Sfuncion[numF] + "Solutions"), ListSolutions, ListSolutions.size());//we need the dimension of the problem
             }
         }//end of the functions
     }

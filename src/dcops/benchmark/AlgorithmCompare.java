@@ -8,6 +8,7 @@ package dcops.benchmark;
 import static dcops.benchmark.ConstraintGeneratorAdd.getaverage;
 import static dcops.benchmark.ConstraintGeneratorAdd.readFileCsvFs;
 import static dcops.benchmark.ConstraintGeneratorAdd.readFileCsv;
+import static dcops.benchmark.ConstraintGeneratorAdd.readFileParam;
 import static dcops.benchmark.EpsilonConstrained.ListMError;
 import java.awt.Color;
 import java.util.Arrays;
@@ -72,7 +73,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
         CRsetting = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        FrequencyParm = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         Sphere = new javax.swing.JCheckBox();
@@ -200,44 +201,41 @@ public class AlgorithmCompare extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel1.setText("Parameter DE");
 
-        jLabel11.setLabelFor(runsSetting);
-        jLabel11.setText("200 Dynamic");
+        jLabel11.setText("Frequency");
 
-        jLabel12.setLabelFor(runsSetting);
-        jLabel12.setText("No. Changes");
+        FrequencyParm.setText("100");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel12)
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel11))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                            .addGap(6, 6, 6)
-                            .addComponent(jLabel5)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(runsSetting))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel1)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel3)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel4))
-                                    .addGap(26, 26, 26)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(CRsetting)
-                                        .addComponent(FPsetting)
-                                        .addComponent(NPsetting, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addContainerGap(47, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(FPsetting, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+                                    .addComponent(CRsetting)
+                                    .addComponent(NPsetting)))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(runsSetting, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FrequencyParm, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,11 +243,11 @@ public class AlgorithmCompare extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(NPsetting, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(11, 11, 11)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(FPsetting, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -260,11 +258,11 @@ public class AlgorithmCompare extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(runsSetting, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jLabel12))
-                .addContainerGap(16, Short.MAX_VALUE))
+                    .addComponent(FrequencyParm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         jLabel6.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
@@ -484,7 +482,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, Short.MAX_VALUE))
+                        .addGap(18, 60, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(AcceptBotton)
@@ -524,7 +522,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -578,10 +576,13 @@ public class AlgorithmCompare extends javax.swing.JFrame {
             int runsParam = Integer.parseInt(runsSetting.getText().trim());
             int lowerParam = Integer.parseInt(lowerSetting.getText().trim());
             int upperParam = Integer.parseInt(upperSetting.getText().trim());
-            int frequencyParam = 1000;// taken from the user 
-            int changesParam = 200;//taken from the file 
-            int dimensionParam = 30;//taken from the user 
-            
+            String fileName = "ConstraintSet";
+            int paramsFile[]= readFileParam(fileName);
+            int frequencyParam = Integer.parseInt(FrequencyParm.getText().trim());// taken from the user or not 
+            int changesParam = paramsFile[0];
+            jTextArea1.append("Changes of runs:" + paramsFile[0]+"\n");
+            int dimensionParam = paramsFile[1];
+            jTextArea1.append("Dimension: " + paramsFile[1]);
             if (FeasibilitySelect.isSelected()){
                 for(int i = 0; i <4; i++){
                     algMatrix[0][i] = 1;
@@ -695,7 +696,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
                 for(int i =0; i< rankMult;i++){
                     rank[i] = rankMatrix[countTemp];
                     countTemp+=rankCount;
-                    AlgorithmCompare.jTextArea1.append(Double.toString(rank[i])+",");
+//                    AlgorithmCompare.jTextArea1.append(Double.toString(rank[i])+",");
                 }
                 double[] rankTemp = new double[rankMult];
                 rankTemp = Arrays.copyOf(rank, rankMult);
@@ -787,9 +788,9 @@ public class AlgorithmCompare extends javax.swing.JFrame {
     }//GEN-LAST:event_CompareTableMouseClicked
 
     
-    public static double[] getFunctionImage(String name, int runs){
+    public static double[] getFunctionImage(String name, int runs, int changesParams){
         int runsParam = runs;
-        int changesParam = 200;
+        int changesParam = changesParams;
         double test[][] = readFileCsvFs(name,runsParam,changesParam);
 //        System.out.println(test[1].length);
 //            for(int i = 0;i <runsParam;i++){
@@ -823,7 +824,9 @@ public class AlgorithmCompare extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         int runsParam = Integer.parseInt(runsSetting.getText().trim());
-        int changesParam = 200;
+        String fileName = "ConstraintSet";
+        int paramsFile[]= readFileParam(fileName);
+        int changesParam = paramsFile[0];
 //        double test[][] = readFileCsvFs("EpsilonRastriginFs.csv",runsParam,changesParam);
 //            for(int i = 0;i <runsParam;i++){
 //                for(int j = 0; j < changesParam -1;j++){
@@ -858,13 +861,13 @@ public class AlgorithmCompare extends javax.swing.JFrame {
         XYSeriesCollection datasetRosenbrock = new XYSeriesCollection();
         
         double[] bestknownAckley;
-        bestknownAckley = readFileCsv("Best_KnownAckleyFxs.csv",200).clone();
+        bestknownAckley = readFileCsv("Best_KnownAckleyFxs.csv",changesParam).clone();
         double[] bestknownRosenbrock;
-        bestknownRosenbrock = readFileCsv("Best_KnownRosenbrockFxs.csv",200).clone();
+        bestknownRosenbrock = readFileCsv("Best_KnownRosenbrockFxs.csv",changesParam).clone();
         double[] bestknownSphere;
-        bestknownSphere = readFileCsv("Best_KnownSphereFxs.csv",200).clone();
+        bestknownSphere = readFileCsv("Best_KnownSphereFxs.csv",changesParam).clone();
         double[] bestknownRastrigin;
-        bestknownRastrigin = readFileCsv("Best_KnownRastriginFxs.csv",200).clone();
+        bestknownRastrigin = readFileCsv("Best_KnownRastriginFxs.csv",changesParam).clone();
         
         
         if (FeasibilitySelect.isSelected()){
@@ -873,7 +876,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
 
             if(Sphere.isSelected()){
                 XYSeries series = new XYSeries("FeasibilitySphere");
-                double getAverage[] = getFunctionImage("FeasibilitySphereFs.csv",runsParam);
+                double getAverage[] = getFunctionImage("FeasibilitySphereFs.csv",runsParam,changesParam);
                 for(int i = 0;i< changesParam-1; i++){
                     //jTextArea1.append(bestknown[i]+",");
 //                   System.out.println(bestknown[i]);
@@ -886,7 +889,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
             }
             if(Rastrigin.isSelected()){
                 XYSeries series = new XYSeries("FeasibilityRastrigin");
-                double getAverage[] = getFunctionImage("FeasibilityRastriginFs.csv",runsParam);   
+                double getAverage[] = getFunctionImage("FeasibilityRastriginFs.csv",runsParam,changesParam);   
                 for(int i = 0;i< changesParam-1; i++){
                    series.add(i, getAverage[i]); 
                 }
@@ -894,7 +897,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
             }
             if(Ackley.isSelected()){
                 XYSeries series = new XYSeries("FeasibilityAckley");
-                double getAverage[] = getFunctionImage("FeasibilityAckleyFs.csv",runsParam);   
+                double getAverage[] = getFunctionImage("FeasibilityAckleyFs.csv",runsParam,changesParam);   
                 for(int i = 0;i< changesParam-1; i++){
                    series.add(i, getAverage[i]);  
                 }
@@ -903,7 +906,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
             }
             if(Rosenbrock.isSelected()){
                 XYSeries series = new XYSeries("FeasibilityRosenbrock");
-                double getAverage[] = getFunctionImage("FeasibilityRosenbrockFs.csv",runsParam);   
+                double getAverage[] = getFunctionImage("FeasibilityRosenbrockFs.csv",runsParam,changesParam);   
                 for(int i = 0;i< changesParam-1; i++){
                    series.add(i, getAverage[i]);
                 }
@@ -919,7 +922,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
 
             if(Sphere.isSelected()){
                 XYSeries series = new XYSeries("EpsilonSphere");
-                double getAverage[] = getFunctionImage("EpsilonSphereFs.csv",runsParam);
+                double getAverage[] = getFunctionImage("EpsilonSphereFs.csv",runsParam,changesParam);
                 for(int i = 0;i< changesParam-1; i++){
                     //jTextArea1.append(bestknown[i]+",");
 //                   System.out.println(bestknown[i]);
@@ -932,7 +935,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
             }
             if(Rastrigin.isSelected()){
                 XYSeries series = new XYSeries("EpsilonRastrigin");
-                double getAverage[] = getFunctionImage("EpsilonRastriginFs.csv",runsParam);   
+                double getAverage[] = getFunctionImage("EpsilonRastriginFs.csv",runsParam,changesParam);   
                 for(int i = 0;i< changesParam-1; i++){
                    series.add(i, getAverage[i]);
                 }
@@ -940,7 +943,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
             }
             if(Ackley.isSelected()){
                 XYSeries series = new XYSeries("EpsilonAckley");
-                double getAverage[] = getFunctionImage("EpsilonAckleyFs.csv",runsParam);   
+                double getAverage[] = getFunctionImage("EpsilonAckleyFs.csv",runsParam,changesParam);   
                 for(int i = 0;i< changesParam-1; i++){
                    series.add(i, getAverage[i]);
                 }
@@ -948,7 +951,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
             }
             if(Rosenbrock.isSelected()){
                 XYSeries series = new XYSeries("EpsilonRosenbrock");
-                double getAverage[] = getFunctionImage("EpsilonRosenbrockFs.csv",runsParam);   
+                double getAverage[] = getFunctionImage("EpsilonRosenbrockFs.csv",runsParam,changesParam);   
                 for(int i = 0;i< changesParam-1; i++){
                    series.add(i, getAverage[i]);
                 }
@@ -963,7 +966,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
 
             if(Sphere.isSelected()){
                 XYSeries series = new XYSeries("PenaltySphere");
-                double getAverage[] = getFunctionImage("PenaltySphereFs.csv",runsParam);
+                double getAverage[] = getFunctionImage("PenaltySphereFs.csv",runsParam,changesParam);
                 for(int i = 0;i< changesParam-1; i++){
                     //jTextArea1.append(bestknown[i]+",");
 //                   System.out.println(bestknown[i]);
@@ -976,7 +979,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
             }
             if(Rastrigin.isSelected()){
                 XYSeries series = new XYSeries("PenaltyRastrigin");
-                double getAverage[] = getFunctionImage("PenaltyRastriginFs.csv",runsParam);   
+                double getAverage[] = getFunctionImage("PenaltyRastriginFs.csv",runsParam,changesParam);   
                 for(int i = 0;i< changesParam-1; i++){
                    series.add(i, getAverage[i]);
                 }
@@ -984,7 +987,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
             }
             if(Ackley.isSelected()){
                 XYSeries series = new XYSeries("PenaltyAckley");
-                double getAverage[] = getFunctionImage("PenaltyAckleyFs.csv",runsParam);   
+                double getAverage[] = getFunctionImage("PenaltyAckleyFs.csv",runsParam,changesParam);   
                 for(int i = 0;i< changesParam-1; i++){
                    series.add(i, getAverage[i]);
                 }
@@ -992,7 +995,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
             }
             if(Rosenbrock.isSelected()){
                 XYSeries series = new XYSeries("PenaltyRosenbrock");
-                double getAverage[] = getFunctionImage("PenaltyRosenbrockFs.csv",runsParam);   
+                double getAverage[] = getFunctionImage("PenaltyRosenbrockFs.csv",runsParam,changesParam);   
                 for(int i = 0;i< changesParam-1; i++){
                    series.add(i, getAverage[i]);
                 }
@@ -1193,6 +1196,7 @@ public class AlgorithmCompare extends javax.swing.JFrame {
     private javax.swing.JCheckBox EpsilonSelect;
     private javax.swing.JTextField FPsetting;
     private javax.swing.JCheckBox FeasibilitySelect;
+    private javax.swing.JTextField FrequencyParm;
     private javax.swing.JRadioButton HiperplaneRatationRadio;
     private javax.swing.JRadioButton HiperplaneTranslationRadio;
     private javax.swing.JTextField NPsetting;
@@ -1205,7 +1209,6 @@ public class AlgorithmCompare extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
