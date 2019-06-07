@@ -44,8 +44,6 @@ public class BenchmarkGeneration extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         NumberOfChanges = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        NumberOfRuns = new javax.swing.JTextField();
         NumberOfDimensions = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -68,13 +66,13 @@ public class BenchmarkGeneration extends javax.swing.JFrame {
         UpperK = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        NumberOfRuns = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         HiperplaneTranslationRadio = new javax.swing.JRadioButton();
         HiperplaneRatationRadio = new javax.swing.JRadioButton();
         CombinedRadio = new javax.swing.JRadioButton();
         jLabel7 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
         MaxEvaluations = new javax.swing.JTextField();
-        RunTimes = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
@@ -101,15 +99,6 @@ public class BenchmarkGeneration extends javax.swing.JFrame {
         });
 
         jLabel5.setText("Number of Dimensions:");
-
-        jLabel6.setText("Number of Runs:");
-
-        NumberOfRuns.setText("30");
-        NumberOfRuns.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NumberOfRunsActionPerformed(evt);
-            }
-        });
 
         NumberOfDimensions.setText("30");
         NumberOfDimensions.addActionListener(new java.awt.event.ActionListener() {
@@ -150,13 +139,9 @@ public class BenchmarkGeneration extends javax.swing.JFrame {
                         .addGap(6, 6, 6)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(NumberOfRuns, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
-                                    .addComponent(NumberOfDimensions, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                .addComponent(NumberOfDimensions, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel3)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -196,11 +181,7 @@ public class BenchmarkGeneration extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(NumberOfDimensions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NumberOfRuns, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(59, 59, 59)
+                .addGap(88, 88, 88)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -259,6 +240,7 @@ public class BenchmarkGeneration extends javax.swing.JFrame {
             }
         });
 
+        bStartsFrom.setEnabled(false);
         bStartsFrom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bStartsFromActionPerformed(evt);
@@ -352,8 +334,18 @@ public class BenchmarkGeneration extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        NumberOfRuns.setText("30");
+        NumberOfRuns.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NumberOfRunsActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Number of Runs:");
+
         buttonGroup4.add(HiperplaneTranslationRadio);
         HiperplaneTranslationRadio.setText("Hyperplane Translation");
+        HiperplaneTranslationRadio.setEnabled(false);
         HiperplaneTranslationRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 HiperplaneTranslationRadioActionPerformed(evt);
@@ -362,26 +354,19 @@ public class BenchmarkGeneration extends javax.swing.JFrame {
 
         buttonGroup4.add(HiperplaneRatationRadio);
         HiperplaneRatationRadio.setText("Hyperplane Rotation");
+        HiperplaneRatationRadio.setEnabled(false);
 
         buttonGroup4.add(CombinedRadio);
         CombinedRadio.setSelected(true);
         CombinedRadio.setText("Combined");
+        CombinedRadio.setEnabled(false);
 
         jLabel7.setText("Evaluations Max:");
-
-        jLabel13.setText("Time of Runs:");
 
         MaxEvaluations.setText("10000");
         MaxEvaluations.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MaxEvaluationsActionPerformed(evt);
-            }
-        });
-
-        RunTimes.setText("1");
-        RunTimes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RunTimesActionPerformed(evt);
             }
         });
 
@@ -398,13 +383,12 @@ public class BenchmarkGeneration extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                             .addComponent(jLabel7)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addGap(0, 0, Short.MAX_VALUE)
-                                    .addComponent(RunTimes, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(MaxEvaluations)))
-                        .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(HiperplaneTranslationRadio)))
+                            .addComponent(MaxEvaluations))
+                        .addComponent(HiperplaneTranslationRadio)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(NumberOfRuns))))
                 .addContainerGap(87, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -422,9 +406,9 @@ public class BenchmarkGeneration extends javax.swing.JFrame {
                     .addComponent(MaxEvaluations, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(RunTimes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(NumberOfRuns, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(123, 123, 123))
         );
 
         jButton1.setText("Run");
@@ -510,7 +494,7 @@ public class BenchmarkGeneration extends javax.swing.JFrame {
 //       bStartsFrom.setEnabled(false);
        int changesParam = Integer.parseInt(NumberOfChanges.getText().trim());
        int dimensionParam = Integer.parseInt(NumberOfDimensions.getText().trim());
-       int runsParam = Integer.parseInt(NumberOfRuns.getText().trim());
+//       int runsParam = Integer.parseInt(RunTimes.getText().trim());
        
        int constraintParam = 0;
        /*if (buttonGroup1.getSelection().equals(GenerateConstraints.getModel())) {
@@ -561,7 +545,7 @@ public class BenchmarkGeneration extends javax.swing.JFrame {
         
         int Max_EvalParam = Integer.parseInt(MaxEvaluations.getText().trim());
         
-        int RunsParam = Integer.parseInt(RunTimes.getText().trim());
+        int RunsParam = Integer.parseInt(NumberOfRuns.getText().trim());
         
         //
         //unshown in GUI
@@ -644,13 +628,6 @@ public class BenchmarkGeneration extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_MaxEvaluationsActionPerformed
 
-    private void RunTimesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RunTimesActionPerformed
-        // TODO add your handling code here:
-        if(RunTimes.getText().equals("")){
-        RunTimes.setText("1");
-        }
-    }//GEN-LAST:event_RunTimesActionPerformed
-
     private void RastriginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RastriginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_RastriginActionPerformed
@@ -704,7 +681,6 @@ public class BenchmarkGeneration extends javax.swing.JFrame {
     private javax.swing.JTextField NumberOfRuns;
     private javax.swing.JCheckBox Rastrigin;
     private javax.swing.JCheckBox Rosenbrock;
-    private javax.swing.JTextField RunTimes;
     private javax.swing.JCheckBox Sphere;
     private javax.swing.JTextField UpperBounds;
     private javax.swing.JTextField UpperK;
@@ -719,7 +695,6 @@ public class BenchmarkGeneration extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
