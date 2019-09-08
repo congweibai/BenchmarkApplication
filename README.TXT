@@ -1,3 +1,5 @@
+My contribute part is implementation of developauser-friendly interface for generating and running benchmarks, as well as finding the best way tovisualise benchmark results.
+
 DCOPs Benchmark v0.8.0 README
 
 Welcome to the Dynamic Constrained Optimisation Benchmark.
